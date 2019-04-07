@@ -8,12 +8,13 @@ body
   flex-direction: column
   margin: 0
   font-size: $font-size-body
+  line-height: $line-height-body
   font-weight: 400
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   -webkit-text-size-adjust: none
   font-family: $font-family-main
-  color: $color-text
+  color: $color-grey
 
 img
   max-width: 100%
@@ -57,11 +58,13 @@ textarea
   resize: none
 
 ::-moz-selection
-  background: #b3d4fc
+  background: $color-purple
+  color: $color-white
   text-shadow: none
 
 ::selection
-  background: #b3d4fc
+  background: $color-purple
+  color: $color-white
   text-shadow: none
 
 input:required
