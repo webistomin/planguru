@@ -1,5 +1,7 @@
 # planguru
 
+<img src="https://i.ibb.co/vjtSHTN/app.png" alt="app">
+
 ## Project setup
 ```
 npm install
