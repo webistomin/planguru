@@ -1,5 +1,7 @@
 module.exports = {
+  productionSourceMap: false,
   css: {
+    sourceMap: true,
     loaderOptions:
       {
         sass:

@@ -3,6 +3,9 @@
 </template>
 
 <style lang="sass">
-  body
-    background-color: $color-green
+  @import "~@/assets/sass/global/fonts.sass"
+  @import "~@/assets/sass/global/normalize.sass"
+  @import "~@/assets/sass/global/global.sass"
+  @import "~@/assets/sass/global/scaffolding.sass"
+  @import "~@/assets/sass/global/container.sass"
 </style>
