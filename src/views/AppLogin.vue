@@ -5,12 +5,12 @@
         img.login__logo(src='/img/planguru-logo.png' width='107' height='24'
                         alt='Planguru' aria-label='Planguru')
       h1.login__title.title Hello!
-      p.login__desc You can use your
-        a.login__link.login__link--purple(href='#')  Fingerprint
-        |  to grant access to the app.
+      p.login__desc You can use your&nbsp;
+        a.login__link.login__link_purple(href='#') Fingerprint
+        br
+        | to grant access to the app.
       form.login__form
         .login__group
-          p {{email}}
           input.login__input(type='email' id='email' required v-model='email')
           label.login__label(for='email') Email address
         .login__group
@@ -18,9 +18,9 @@
           label.login__label(for='password') Password
         .login__actions
           button.login__btn.btn(type='submit') Login
-          a.login__link.login__link--purple(href='#') Forgot password?
+          a.login__link.login__link_purple(href='#') Forgot password?
       p.login__text Still without account?
-        a.login__link.login__link--orange(href='#')  Create one
+        a.login__link.login__link_orange(href='#')  Create one
 </template>
 
 <script>
@@ -35,22 +35,5 @@ export default {
 </script>
 
 <style lang="sass">
-  .login__group
-    position: relative
-    margin: 30px
-
-  .login__label
-    position: absolute
-    left: 0
-    +ts()
-    transform-origin: 0 0
-    backface-visibility: hidden
-
-  .login__input:focus ~ .login__label,
-  .login__input:not(:focus):valid ~ .login__label,
-  .login__input[value]:not([value=''])
-    transform: translateY(-25px) scale(0.8)
-
-  /*.login__input[value]:not([value=""]):invalid:not(:focus)*/
-
+  @import "~@/assets/sass/blocks/login.sass"
 </style>
