@@ -3,14 +3,18 @@
   align-items: center
   justify-content: center
   height: 100%
+  max-width: 312px
+  margin: auto
 
   +e('home')
     display: inline-block
     margin-bottom: 60px
     +ts()
     cursor: pointer
+    user-select: none
 
-    &:hover
+    &:hover,
+    &:focus
       opacity: 0.8
 
     &:active
@@ -29,6 +33,7 @@
 
   +e('link')
     position: relative
+    outline: none
 
     &::before
       content: ''
@@ -46,7 +51,8 @@
       &::before
         background-color: rgba(117, 64, 238, 0.15)
 
-      &:hover::before
+      &:hover::before,
+      &:focus::before
         background-color: $color-purple
 
     +m('orange')
@@ -55,7 +61,8 @@
       &::before
         background-color: rgba(255, 112, 82, 0.15)
 
-      &:hover::before
+      &:hover::before,
+      &:focus::before
         background-color: $color-orange
 
   +e('input')
@@ -67,6 +74,7 @@
     padding-bottom: 6px
     color: $color-grey-second
     outline: none
+    background-color: transparent
     +ts()
 
     &:hover,
@@ -84,6 +92,12 @@
     position: absolute
     left: 0
     color: $color-grey-second
+    pointer-events: none
+    transition: all 0.2s ease-in-out
+    transform-origin: 0 0
+
+    +m('top')
+      transform: translateY(-25px) scale(0.8)
 
   +e('actions')
     display: flex
@@ -95,10 +109,13 @@
     line-height: 42px
     background-color: rgba(117, 64, 238, 0.20)
     color: $color-purple
+    user-select: none
     +ts()
     border-radius: 23px
+    outline: none
 
-    &:hover
+    &:hover,
+    &:focus
       background-color: $color-purple
       color: $color-white
 
@@ -108,5 +125,37 @@
   +e('text')
     text-align: center
 
+  +e('particles')
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    z-index: -1
+    backface-visibility: hidden
 
+  +e('container')
+    @media (orientation: landscape)
+      padding: 50px 0
 
+  +e('error')
+    font-size: 10px
+    position: absolute
+    text-align: right
+    color: $color-orange
+    top: -22px
+    right: 0
+    transition: visibility 0s linear .33s, opacity .33s linear
+    visibility: hidden
+    opacity: 0
+
+    +m('visible')
+      visibility: visible
+      opacity: 1
+      transition-delay: 0s
+
+    +m('shake')
+      animation-name: shake
+      animation-duration: 3s
+      animation-iteration-count: 2
+      animation-timing-function: ease-in
