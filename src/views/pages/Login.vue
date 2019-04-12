@@ -5,6 +5,7 @@
       :isLoginFormVisible='isLoginFormVisible'
       @openRegForm='openRegForm'
       @openRecoveryForm='openRecoveryForm'
+      @openFingerprintForm="openFingerprintForm"
       )
     AppRegistrationForm(
       :isRegFormVisible='isRegFormVisible'
@@ -15,7 +16,7 @@
       @openLoginForm='openLoginForm'
       )
     AppFingerprint(
-      :isFingerprintVisible='isFingerprintFormVisible'
+      :isFingerprintFormVisible='isFingerprintFormVisible'
       @openLoginForm='openLoginForm'
     )
 </template>
@@ -33,10 +34,10 @@ export default {
   },
   data() {
     return {
-      isLoginFormVisible: false,
+      isLoginFormVisible: true,
       isRegFormVisible: false,
       isRecoveryFormVisible: false,
-      isFingerprintFormVisible: true,
+      isFingerprintFormVisible: false,
     };
   },
   mounted() {
@@ -158,6 +159,7 @@ export default {
     openRegForm() {
       this.isLoginFormVisible = false;
       this.isRecoveryFormVisible = false;
+      this.isFingerprintFormVisible = false;
       setTimeout(() => {
         this.isRegFormVisible = true;
       }, 500);
@@ -165,6 +167,7 @@ export default {
     openLoginForm() {
       this.isRegFormVisible = false;
       this.isRecoveryFormVisible = false;
+      this.isFingerprintFormVisible = false;
       setTimeout(() => {
         this.isLoginFormVisible = true;
       }, 500);
@@ -172,8 +175,16 @@ export default {
     openRecoveryForm() {
       this.isRegFormVisible = false;
       this.isLoginFormVisible = false;
+      this.isFingerprintFormVisible = false;
       setTimeout(() => {
         this.isRecoveryFormVisible = true;
+      }, 500);
+    },
+    openFingerprintForm() {
+      this.isRegFormVisible = false;
+      this.isLoginFormVisible = false;
+      setTimeout(() => {
+        this.isFingerprintFormVisible = true;
       }, 500);
     },
   },

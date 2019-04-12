@@ -1,7 +1,8 @@
 <template lang="pug">
-  section.fingerprint
+  section.fingerprint(:class='{"hidden" : !isFingerprintFormVisible}')
     .fingerprint__container.container
-      a.fingerprint__home.home
+      a.fingerprint__home.home(@click="openLoginForm")
+      h1.fingerprint__title.title Log in
       p.fingerprint__desc.text Press your finger against the fingerprint sensor, and then lift it.
         br
         | Continue to press and lift your finger until the scan is complete.
@@ -99,7 +100,12 @@ export default {
   props: {
     isFingerprintFormVisible: {
       type: Boolean,
-      default: true,
+      default: false,
+    },
+  },
+  methods: {
+    openLoginForm() {
+      this.$emit('openLoginForm');
     },
   },
 };

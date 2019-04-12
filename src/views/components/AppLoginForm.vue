@@ -5,7 +5,13 @@
         img.login__logo(src='/img/logo.svg' width='107' height='24'
                         alt='Planguru' aria-label='Planguru')
       h1.login__title.title Hello!
-      p.login__desc.text(v-html='getLoginText')
+      p.login__desc.text(v-if="isMobile") You can use your&nbsp;
+        a.login__link.link.link_purple(href="#" @click="openFingerprintForm") Fingerprint
+        br
+        | to grant access to the app.
+      p.login__desc.text(v-else) Sign in with your credentials or
+        br
+        | create a new account
       form.login__form(autocomplete='off' @submit.prevent="onSubmit")
         .login__group
             p.login__error.error(
@@ -110,16 +116,13 @@ export default {
     openRecoveryForm() {
       this.$emit('openRecoveryForm');
     },
+    openFingerprintForm() {
+      this.$emit('openFingerprintForm');
+    },
   },
   computed: {
     isMobile() {
       return mobileAndTabletCheck();
-    },
-    getLoginText() {
-      if (this.isMobile) {
-        return 'You can use your&nbsp; <a href="#" class="login__link link link_purple">Fingerprint</a> <br> to grant access to the app.';
-      }
-      return 'Sign in with your credentials or <br> create a new account';
     },
   },
 };
