@@ -1,0 +1,38 @@
+.recovery
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%,-50%)
+  width: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 100%
+  max-width: 312px
+  margin: auto
+  +ts()
+  backface-visibility: hidden
+
+  +e('group')
+    position: relative
+    margin-bottom: 40px
+
+  +e('home')
+    display: inline-block
+    width: 40px
+    height: 40px
+    background-image: url("/img/svg-icons/arrow-left.svg")
+    background-repeat: no-repeat
+    background-position: left center
+    backface-visibility: hidden
+    +ts()
+
+    &:hover,
+    &:focus
+      transform: translateX(-5px)
+
+  +e('title')
+    margin: 0 0 10px !important
+
+  +e('desc')
+    margin-bottom: 50px

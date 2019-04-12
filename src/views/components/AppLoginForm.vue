@@ -57,7 +57,7 @@
             ) Password
         .login__actions
           button.login__btn.btn.btn_purple(type='submit') Login
-          a.login__link.link.link_purple(href='#') Forgot password?
+          a.login__link.link.link_purple(href='#' @click="openRecoveryForm") Forgot password?
       p.login__text.text Still without account?
         a.login__link.link.link_orange(href='#' @click='openRegForm')  Create one
 </template>
@@ -106,6 +106,9 @@ export default {
     },
     openRegForm() {
       this.$emit('openRegForm');
+    },
+    openRecoveryForm() {
+      this.$emit('openRecoveryForm');
     },
   },
   computed: {

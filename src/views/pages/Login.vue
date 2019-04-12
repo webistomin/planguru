@@ -1,21 +1,42 @@
 <template lang="pug">
   div.wrapper
     div.particles#particles
-    AppLoginForm(:isLoginFormVisible='isLoginFormVisible' @openRegForm='openRegForm')
-    AppRegistrationForm(:isRegFormVisible='isRegFormVisible' @openLoginForm='openLoginForm')
+    AppLoginForm(
+      :isLoginFormVisible='isLoginFormVisible'
+      @openRegForm='openRegForm'
+      @openRecoveryForm='openRecoveryForm'
+      )
+    AppRegistrationForm(
+      :isRegFormVisible='isRegFormVisible'
+      @openLoginForm='openLoginForm'
+      )
+    AppRecoveryForm(
+      :isRecoveryFormVisible='isRecoveryFormVisible'
+      @openLoginForm='openLoginForm'
+      )
+    AppFingerprint(
+      :isFingerprintVisible='isFingerprintFormVisible'
+      @openLoginForm='openLoginForm'
+    )
 </template>
 
 <script>
 import 'particles.js';
 import AppLoginForm from '@/views/components/AppLoginForm.vue';
 import AppRegistrationForm from '@/views/components/AppRegistrationForm.vue';
+import AppRecoveryForm from '@/views/components/AppRecoveryForm.vue';
+import AppFingerprint from '@/views/components/AppFingerprint.vue';
 
 export default {
-  components: { AppRegistrationForm, AppLoginForm },
+  components: {
+    AppFingerprint, AppRecoveryForm, AppRegistrationForm, AppLoginForm,
+  },
   data() {
     return {
-      isLoginFormVisible: true,
+      isLoginFormVisible: false,
       isRegFormVisible: false,
+      isRecoveryFormVisible: false,
+      isFingerprintFormVisible: true,
     };
   },
   mounted() {
@@ -136,14 +157,23 @@ export default {
     },
     openRegForm() {
       this.isLoginFormVisible = false;
+      this.isRecoveryFormVisible = false;
       setTimeout(() => {
         this.isRegFormVisible = true;
       }, 500);
     },
     openLoginForm() {
       this.isRegFormVisible = false;
+      this.isRecoveryFormVisible = false;
       setTimeout(() => {
         this.isLoginFormVisible = true;
+      }, 500);
+    },
+    openRecoveryForm() {
+      this.isRegFormVisible = false;
+      this.isLoginFormVisible = false;
+      setTimeout(() => {
+        this.isRecoveryFormVisible = true;
       }, 500);
     },
   },

@@ -1,6 +1,5 @@
 <template lang="pug">
   section.reg(:class='{"hidden" : !isRegFormVisible}')
-    .reg__particles#reg__particles
     .reg__container.container
       a.reg__home.home(@click="openLoginForm")
       h1.reg__title.title Sign up

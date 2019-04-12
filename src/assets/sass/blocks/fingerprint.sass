@@ -1,0 +1,47 @@
+.fingerprint
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%,-50%)
+  width: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 100%
+  max-width: 312px
+  margin: auto
+  +ts()
+  backface-visibility: hidden
+
+  +e('desc')
+    user-select: none
+
+  +e('inner')
+    text-align: center
+    padding: 50px 0
+
+  +e('finger')
+    display: inline-block
+    width: 140px
+
+    path
+      fill: none
+      stroke: $color-lightgrey
+      stroke-width: 7px
+      stroke-linecap: round
+
+    .color
+      stroke: #d8d8d8
+
+    .touch path
+      stroke: $color-orange
+      stroke-dashoffset: 285
+      stroke-dasharray: 284
+      transition: all cubic-bezier(0.42, 0, 0.14, 0.43) 0.8s
+
+    .touch .color
+      stroke: rgba(255, 112, 82, 0.50)
+
+    &:active .touch path
+      transition: all linear 1.4s
+      stroke-dashoffset: 0
