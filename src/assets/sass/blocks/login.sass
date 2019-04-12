@@ -7,117 +7,22 @@
   margin: auto
 
   +e('home')
-    display: inline-block
     margin-bottom: 60px
-    +ts()
-    cursor: pointer
-    user-select: none
-
-    &:hover,
-    &:focus
-      opacity: 0.8
-
-    &:active
-      opacity: 0.5
 
   +e('title')
-    font-size: 24px
-    line-height: 1.1
-    margin: 0 0 10px
-    color: $color-navy
+    margin: 0 0 10px !important
 
   +e('desc')
-    font-size: 16px
-    line-height: 1.6
     margin-bottom: 50px
-
-  +e('link')
-    position: relative
-    outline: none
-
-    &::before
-      content: ''
-      position: absolute
-      left: 50%
-      transform: translateX(-50%)
-      bottom: -4px
-      width: 100%
-      height: 2px
-      +ts()
-
-    +m('purple')
-      color: $color-purple
-
-      &::before
-        background-color: rgba(117, 64, 238, 0.15)
-
-      &:hover::before,
-      &:focus::before
-        background-color: $color-purple
-
-    +m('orange')
-      color: $color-orange
-
-      &::before
-        background-color: rgba(255, 112, 82, 0.15)
-
-      &:hover::before,
-      &:focus::before
-        background-color: $color-orange
-
-  +e('input')
-    width: 100%
-    box-sizing: border-box
-    font-size: 16px
-    border: none
-    border-bottom: 1px solid $color-lightgrey
-    padding-bottom: 6px
-    color: $color-grey-second
-    outline: none
-    background-color: transparent
-    +ts()
-
-    &:hover,
-    &:focus
-      border-color: $color-grey
-
-    &:focus ~ .login__label
-      color: $color-grey
 
   +e('group')
     position: relative
     margin-bottom: 40px
 
-  +e('label')
-    position: absolute
-    left: 0
-    color: $color-grey-second
-    pointer-events: none
-    transition: all 0.2s ease-in-out
-    transform-origin: 0 0
-
-    +m('top')
-      transform: translateY(-25px) scale(0.8)
-
   +e('actions')
     display: flex
     justify-content: space-between
     align-items: center
-
-  +e('btn')
-    padding: 0 24px
-    line-height: 42px
-    background-color: rgba(117, 64, 238, 0.20)
-    color: $color-purple
-    user-select: none
-    +ts()
-    border-radius: 23px
-    outline: none
-
-    &:hover,
-    &:focus
-      background-color: $color-purple
-      color: $color-white
 
   +e('form')
     margin-bottom: 120px
@@ -138,24 +43,3 @@
     @media (orientation: landscape)
       padding: 50px 0
 
-  +e('error')
-    font-size: 10px
-    position: absolute
-    text-align: right
-    color: $color-orange
-    top: -22px
-    right: 0
-    transition: visibility 0s linear .33s, opacity .33s linear
-    visibility: hidden
-    opacity: 0
-
-    +m('visible')
-      visibility: visible
-      opacity: 1
-      transition-delay: 0s
-
-    +m('shake')
-      animation-name: shake
-      animation-duration: 3s
-      animation-iteration-count: 2
-      animation-timing-function: ease-in

@@ -1,0 +1,18 @@
+.input
+  width: 100%
+  box-sizing: border-box
+  font-size: 16px
+  border: none
+  border-bottom: 1px solid $color-lightgrey
+  padding-bottom: 6px
+  color: $color-grey-second
+  outline: none
+  background-color: transparent
+  +ts()
+
+  &:hover,
+  &:focus
+    border-color: $color-grey
+
+  &:focus ~ .label
+    color: $color-grey

@@ -1,0 +1,28 @@
+.btn
+  padding: 0 24px
+  line-height: 42px
+  user-select: none
+  border-radius: 23px
+  outline: none
+  +ts()
+
+  +m('purple')
+    background-color: rgba(117, 64, 238, 0.20)
+    color: $color-purple
+
+    &:hover,
+    &:focus
+      background-color: $color-purple
+      color: $color-white
+
+  +m('orange')
+    background-color: rgba(255, 112, 82, 0.20)
+    color: $color-orange
+
+    &:hover,
+    &:focus
+      background-color: $color-orange
+      color: $color-white
+
+  &:active
+    opacity: 0.9

@@ -2,53 +2,65 @@
   section.login
     .login__particles#login__particles
     .login__container.container
-      a.login__home
+      a.login__home.home
         img.login__logo(src='/img/logo.svg' width='107' height='24'
                         alt='Planguru' aria-label='Planguru')
       h1.login__title.title Hello!
-      p.login__desc(v-html='getLoginText')
+      p.login__desc.text(v-html='getLoginText')
       form.login__form(autocomplete='off' @submit.prevent="onSubmit")
         .login__group
-            p.login__error(
-              :class="{'login__error_visible':!$v.email.email, 'login__error_shake': isInvalid}"
+            p.login__error.error(
+              :class="{\
+                'error_visible':!$v.email.email, \
+                'error_shake': isInvalid\
+                }"
               ) Please, enter valid email address
-            p.login__error(
-              :class="{'login__error_visible':!$v.email.required && $v.email.$dirty, 'login__error_shake': isInvalid}"
+            p.login__error.error(
+              :class="{\
+                'error_visible':!$v.email.required && $v.email.$dirty, \
+                'error_shake': isInvalid\
+                }"
             ) Please, enter email address
-            input.login__input(
+            input.login__input.input(
               type='email'
               id='email'
               v-model.trim.lazy="$v.email.$model"
               @focus="isEmailInputFocused = true"
               @blur="isEmailInputFocused = false"
               )
-            label.login__label(
+            label.login__label.label(
               for='email'
-              :class="{'login__label_top': isEmailInputFocused || email }"
+              :class="{'label_top': isEmailInputFocused || email }"
               ) Email address
         .login__group
-          p.login__error(
-            :class="{'login__error_visible':!$v.password.minLength, 'login__error_shake': isInvalid}"
+          p.login__error.error(
+            :class="{\
+              'error_visible':!$v.password.minLength, \
+              'error_shake': isInvalid\
+              }"
           ) Min length is 4 characters
-          p.login__error(
-            :class="{'login__error_visible':!$v.password.required && $v.password.$dirty, 'login__error_shake': isInvalid}"
+          p.login__error.error(
+            :class="{\
+              'error_visible':!$v.password.required && $v.password.$dirty, \
+              'error_shake': isInvalid\
+              }"
           ) Please, enter password
-          input.login__input(
+          input.login__input.input(
             type='password'
             id='password'
             v-model.trim.lazy="$v.password.$model"
             @focus="isPasswordInputFocused = true"
             @blur="isPasswordInputFocused = false"
             )
-          label.login__label(
+          label.login__label.label(
             for='password'
-            :class="{'login__label_top': isPasswordInputFocused || password}"
+            :class="{'label_top': isPasswordInputFocused || password}"
             ) Password
         .login__actions
-          button.login__btn.btn(type='submit') Login
-          a.login__link.login__link_purple(href='#') Forgot password?
-      p.login__text Still without account?
-        a.login__link.login__link_orange(href='#')  Create one
+          button.login__btn.btn.btn_purple(type='submit') Login
+          a.login__link.link.link_purple(href='#') Forgot password?
+      p.login__text.text Still without account?
+        a.login__link.link.link_orange(href='#')  Create one
 </template>
 
 <script>
@@ -194,6 +206,7 @@ export default {
       });
     },
     onSubmit() {
+      this.$v.$touch();
       if (this.$v.$invalid) {
         this.isInvalid = true;
         setTimeout(() => {
@@ -208,7 +221,7 @@ export default {
     },
     getLoginText() {
       if (this.isMobile) {
-        return 'You can use your&nbsp; <a href="#" class="login__link login__link_purple">Fingerprint</a> <br> to grant access to the app.';
+        return 'You can use your&nbsp; <a href="#" class="login__link link link_purple">Fingerprint</a> <br> to grant access to the app.';
       }
       return 'Sign in with your credentials or <br> create a new account';
     },
