@@ -24,13 +24,13 @@
           ) Please, enter email address
           input.reg__input.input(
             type='email'
-            id='email'
+            id='emailReg'
             v-model.trim.lazy="$v.email.$model"
             @focus="isEmailInputFocused = true"
             @blur="isEmailInputFocused = false"
             )
           label.reg__label.label(
-            for='email'
+            for='emailReg'
             :class="{'label_top': isEmailInputFocused || email}"
             ) Email address
         .reg__group
@@ -48,13 +48,13 @@
           ) Min length is 4 characters
           input.reg__input.input(
             type='password'
-            id='password'
+            id='passwordReg'
             v-model.trim.lazy="$v.password.$model"
             @focus="isPasswordInputFocused = true"
             @blur="isPasswordInputFocused = false"
             )
           label.reg__label.label(
-            for='password'
+            for='passwordReg'
             :class="{'label_top': isPasswordInputFocused || password}"
             ) Password
         .reg__group
