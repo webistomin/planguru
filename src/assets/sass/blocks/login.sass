@@ -1,10 +1,17 @@
 .login
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%,-50%)
+  width: 100%
   display: flex
   align-items: center
   justify-content: center
   height: 100%
   max-width: 312px
   margin: auto
+  backface-visibility: hidden
+  +ts()
 
   +e('home')
     margin-bottom: 60px
@@ -29,15 +36,6 @@
 
   +e('text')
     text-align: center
-
-  +e('particles')
-    position: absolute
-    left: 0
-    top: 0
-    right: 0
-    bottom: 0
-    z-index: -1
-    backface-visibility: hidden
 
   +e('container')
     @media (orientation: landscape)

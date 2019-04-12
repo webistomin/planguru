@@ -1,10 +1,17 @@
 .reg
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%,-50%)
+  width: 100%
   display: flex
   align-items: center
   justify-content: center
   height: 100%
   max-width: 312px
   margin: auto
+  +ts()
+  backface-visibility: hidden
 
   +e('group')
     position: relative

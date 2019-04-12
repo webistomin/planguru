@@ -1,6 +1,5 @@
 <template lang="pug">
-  section.login
-    .login__particles#login__particles
+  section.login(:class='{"hidden" : !isLoginFormVisible}')
     .login__container.container
       a.login__home.home
         img.login__logo(src='/img/logo.svg' width='107' height='24'
@@ -60,16 +59,15 @@
           button.login__btn.btn.btn_purple(type='submit') Login
           a.login__link.link.link_purple(href='#') Forgot password?
       p.login__text.text Still without account?
-        a.login__link.link.link_orange(href='#')  Create one
+        a.login__link.link.link_orange(href='#' @click='openRegForm')  Create one
 </template>
 
 <script>
 import { required, email, minLength } from 'vuelidate/lib/validators';
-import 'particles.js';
-import mobileAndTabletCheck from '../assets/js/isMobile';
+import mobileAndTabletCheck from '@/assets/js/isMobile';
 
 export default {
-  name: 'AppLogin',
+  name: 'AppLoginForm',
   data() {
     return {
       email: '',
@@ -78,6 +76,12 @@ export default {
       isPasswordInputFocused: false,
       isInvalid: false,
     };
+  },
+  props: {
+    isLoginFormVisible: {
+      type: Boolean,
+      default: true,
+    },
   },
   validations: {
     email: {
@@ -89,122 +93,8 @@ export default {
       minLength: minLength(4),
     },
   },
-  mounted() {
-    this.initParticles();
-  },
+
   methods: {
-    initParticles() {
-      window.particlesJS('login__particles', {
-        particles: {
-          number: {
-            value: 5,
-            density: {
-              enable: true,
-              value_area: 800,
-            },
-          },
-          color: {
-            value: '#ffffff',
-          },
-          shape: {
-            type: 'circle',
-            stroke: {
-              width: 1,
-              color: '#dfdfe4',
-            },
-            polygon: {
-              nb_sides: 6,
-            },
-            image: {
-              src: 'img/github.svg',
-              width: 100,
-              height: 100,
-            },
-          },
-          opacity: {
-            value: 0,
-            random: true,
-            anim: {
-              enable: false,
-              speed: 1,
-              opacity_min: 0.1,
-              sync: false,
-            },
-          },
-          size: {
-            value: 50,
-            random: true,
-            anim: {
-              enable: true,
-              speed: 10,
-              size_min: 40,
-              sync: false,
-            },
-          },
-          line_linked: {
-            enable: false,
-            distance: 200,
-            color: '#ffffff',
-            opacity: 1,
-            width: 2,
-          },
-          move: {
-            enable: true,
-            speed: 8,
-            direction: 'none',
-            random: true,
-            straight: false,
-            out_mode: 'out',
-            bounce: false,
-            attract: {
-              enable: false,
-              rotateX: 600,
-              rotateY: 1200,
-            },
-          },
-        },
-        interactivity: {
-          detect_on: 'canvas',
-          events: {
-            onhover: {
-              enable: false,
-              mode: 'grab',
-            },
-            onclick: {
-              enable: false,
-              mode: 'push',
-            },
-            resize: true,
-          },
-          modes: {
-            grab: {
-              distance: 400,
-              line_linked: {
-                opacity: 1,
-              },
-            },
-            bubble: {
-              distance: 400,
-              size: 40,
-              duration: 2,
-              opacity: 8,
-              speed: 3,
-            },
-            repulse: {
-              distance: 200,
-              duration: 0.4,
-            },
-            push: {
-              particles_nb: 4,
-            },
-            remove: {
-              particles_nb: 2,
-            },
-          },
-        },
-        retina_detect: true,
-      });
-    },
     onSubmit() {
       this.$v.$touch();
       if (this.$v.$invalid) {
@@ -213,6 +103,9 @@ export default {
           this.isInvalid = false;
         }, 300);
       }
+    },
+    openRegForm() {
+      this.$emit('openRegForm');
     },
   },
   computed: {

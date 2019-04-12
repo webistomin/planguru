@@ -1,8 +1,8 @@
 <template lang="pug">
-  section.reg
+  section.reg(:class='{"hidden" : !isRegFormVisible}')
     .reg__particles#reg__particles
     .reg__container.container
-      a.reg__home.home
+      a.reg__home.home(@click="openLoginForm")
       h1.reg__title.title Sign up
       p.reg__desc.desc Create an account to use Planguru
         br
@@ -84,8 +84,8 @@
             ) Repeat password
         .reg__actions
           button.reg__btn.btn.btn_orange(type='submit') Sign up
-      p.reg__text.desc I already have an account.
-        a.reg__link.link.link_purple(href='#')  Login
+      p.reg__text.desc I already have an account.&nbsp;
+        a.reg__link.link.link_purple(href='#' @click="openLoginForm") Login
 
 </template>
 
@@ -95,7 +95,7 @@ import {
 } from 'vuelidate/lib/validators';
 
 export default {
-  name: 'AppRegistration',
+  name: 'AppRegistrationForm',
   data() {
     return {
       email: '',
@@ -106,6 +106,12 @@ export default {
       isPasswordRepeatInputFocused: '',
       isInvalid: false,
     };
+  },
+  props: {
+    isRegFormVisible: {
+      type: Boolean,
+      default: false,
+    },
   },
   validations: {
     email: {
@@ -130,6 +136,9 @@ export default {
           this.isInvalid = false;
         }, 300);
       }
+    },
+    openLoginForm() {
+      this.$emit('openLoginForm');
     },
   },
 };

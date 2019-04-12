@@ -1,15 +1,13 @@
 <template lang="pug">
   #app
-    //AppLogin
-    AppRegistration
+    Login
 </template>
 
 <script>
-import AppLogin from './views/AppLogin.vue';
-import AppRegistration from './views/AppRegistration.vue';
+import Login from '@/views/pages/Login.vue';
 
 export default {
-  components: { AppRegistration, AppLogin },
+  components: { Login },
 };
 </script>
 
@@ -27,4 +25,5 @@ export default {
   @import "~@/assets/sass/blocks/input.sass"
   @import "~@/assets/sass/blocks/home.sass"
   @import "~@/assets/sass/blocks/error.sass"
+  @import "~@/assets/sass/blocks/particles.sass"
 </style>
