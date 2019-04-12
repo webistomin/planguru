@@ -26,6 +26,14 @@
       <td><code>npm run build</code></td>
       <td>Produces a production-ready bundle in the dist/ directory, with minification for JS/CSS/HTML and auto vendor chunk splitting for better caching. The chunk manifest is inlined into the HTML.</td>
     </tr>
+    <tr>
+      <td><code>test:e2e</code></td>
+      <td>Run Cypress end-to-end tests</td>
+    </tr>
+    <tr>
+      <td><code>test:unit</code></td>
+      <td>Run Jest unit tests</td>
+    </tr>
   </tbody>
 </table>
 
@@ -40,12 +48,24 @@
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://ru.vuejs.org/index.html">Vue.js</a></td>
-      <td>...</td>
+      <td><a href="https://vuejs.org/index.html">Vue.js</a></td>
+      <td>Main framework for frontend development</td>
     </tr>
     <tr>
-      <td><a href="https://vuex.vuejs.org/ru/">Vuex</a></td>
-      <td>...</td>
+      <td><a href="https://vuex.vuejs.org/">Vuex</a></td>
+      <td>Centralized State Management for Vue.js</td>
+    </tr>
+    <tr>
+      <td><a href="http://router.vuejs.org/">Vue-router</a></td>
+      <td>The official router for Vue.js</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/vuelidate/vuelidate">Vuelidate</a></td>
+      <td>Model-based validation for Vue.js</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/VincentGarreau/particles.js/">particles.js</a></td>
+      <td>JavaScript library for creating particles</td>
     </tr>
   </tbody>
 </table>
