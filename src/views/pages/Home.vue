@@ -1,14 +1,16 @@
 <template lang="pug">
-  section.calendar
+  div
+    TheCalendar
     TheUserBlock
 </template>
 
 <script>
 import TheUserBlock from '@/views/components/TheUserBlock.vue';
+import TheCalendar from '@/views/components/TheCalendar.vue';
 
 export default {
   name: 'Home',
-  components: { TheUserBlock },
+  components: { TheCalendar, TheUserBlock },
 };
 </script>
 

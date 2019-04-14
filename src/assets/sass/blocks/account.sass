@@ -1,7 +1,13 @@
 .account
-  position: relative
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 2
+  width: 100%
+  box-shadow: 0 0 20px 0 rgba(37, 38, 94, 0.1)
   box-sizing: border-box
-  padding: 48px 0 24px 0
+  padding: 24px 0 4px 0
+  background-color: $color-white
 
   +e('particles')
     position: absolute
@@ -51,9 +57,8 @@
     justify-content: flex-start
     align-items: center
     width: calc(100% - 60px)
-    margin-bottom: 20px
+    margin-bottom: 4px
     padding-left: 32px
-
 
   +e('title')
     margin-right: 14px
@@ -63,12 +68,10 @@
     padding-right: 32px
     padding-left: 32px
 
-
   +e('list')
     display: flex
     overflow: auto
-    padding: 20px 32px
-    padding-right: 0
+    padding: 20px 0 20px 32px
     position: relative
 
     &::after

@@ -72,7 +72,7 @@ export default {
       window.particlesJS('account-particles', {
         particles: {
           number: {
-            value: 3,
+            value: 6,
             density: {
               enable: true,
               value_area: 800,
