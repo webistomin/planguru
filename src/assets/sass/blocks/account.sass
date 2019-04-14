@@ -1,0 +1,152 @@
+.account
+  position: relative
+  box-sizing: border-box
+  padding: 48px 0 24px 0
+
+  +e('particles')
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    z-index: -1
+
+  +e('username')
+    display: none
+
+  +e('button')
+    display: none
+
+  +e('userlink')
+    display: inline-block
+
+    +m('notification')
+      position: relative
+
+      &::before
+        content: ""
+        position: absolute
+        top: 0
+        right: 0
+        width: 8px
+        height: 8px
+        background-color: $color-orange
+        border-radius: 50%
+
+  +e('user')
+    text-align: right
+
+  +e('userpic')
+    border-radius: 50%
+    border: 1px solid $color-grey-border
+    +ts()
+
+    &:hover
+      border-color: $color-grey
+      box-shadow: 0 2px 20px 0 rgba(37, 38, 94, 0.1)
+
+  +e('heading')
+    box-sizing: border-box
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    width: calc(100% - 60px)
+    margin-bottom: 20px
+    padding-left: 32px
+
+
+  +e('title')
+    margin-right: 14px
+
+  +e('notifications')
+    margin-bottom: -34px
+    padding-right: 32px
+    padding-left: 32px
+
+
+  +e('list')
+    display: flex
+    overflow: auto
+    padding: 20px 32px
+    padding-right: 0
+    position: relative
+
+    &::after
+      content: ""
+      flex: 0 0 1px
+
+  +e('item')
+    width: 260px
+    box-sizing: border-box
+    padding: 16px 16px 16px 22px
+    position: relative
+    border-radius: 5px
+    box-shadow: 0 4px 24px 0 rgba(37, 38, 94, 0.1)
+    background-repeat: no-repeat
+    background-size: 24px 24px
+    background-position: 220px 16px
+    flex-shrink: 0
+    margin-right: 24px
+
+    &::before
+      content: ""
+      position: absolute
+      width: 6px
+      height: 100%
+      top: 0
+      left: 0
+      border-top-left-radius: 5px
+      border-bottom-left-radius: 5px
+
+    +m('project-meeting')
+      background-image: url("/img/meeting-1.png")
+      &::before
+        background-color: $color-green
+
+      & .account__status
+        background-color: rgba(45, 199, 109, 0.1)
+        background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0,7l3,3L10,0' transform='translate(1 1)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
+
+  +e('theme')
+    width: calc(100% - 40px)
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
+    font-weight: 500
+    font-size: 15px
+    color: $color-navy
+    margin: 0 0 2px
+
+  +e('date')
+    display: flex
+    align-items: center
+    width: calc(100% - 40px)
+    overflow: hidden
+    white-space: nowrap
+    margin-bottom: 8px
+
+  +e('time')
+    font-weight: 500
+    font-size: 13px
+    color: $color-grey-second
+
+  +e('participants')
+    display: flex
+    align-items: center
+
+  +e('participant')
+    &:not(:last-child)
+      margin-right: 4px
+
+  +e('status')
+    margin-left: auto
+    background-position: center
+    background-repeat: no-repeat
+    width: 34px
+    height: 24px
+    border-radius: 12px
+    flex-shrink: 0
+
+  +e('figure')
+    border-radius: 50%
+

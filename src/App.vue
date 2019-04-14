@@ -1,6 +1,6 @@
 <template lang="pug">
   #app
-    Login
+    router-view
 </template>
 
 <script>
@@ -26,4 +26,5 @@ export default {
   @import "~@/assets/sass/blocks/home.sass"
   @import "~@/assets/sass/blocks/error.sass"
   @import "~@/assets/sass/blocks/particles.sass"
+  @import "~@/assets/sass/blocks/pill.sass"
 </style>
