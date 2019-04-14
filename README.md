@@ -4,7 +4,7 @@
 
 [![Build status][travis-image]][travis-url] [![dependencies Status](https://david-dm.org/webistomin/planguru/status.svg)](https://david-dm.org/webistomin/planguru) [![Dependency status][dependency-image]][dependency-url] 
 
-## Development setup
+## ⚙ Development setup
 
 <table>
   <thead>
@@ -26,10 +26,18 @@
       <td><code>npm run build</code></td>
       <td>Produces a production-ready bundle in the dist/ directory, with minification for JS/CSS/HTML and auto vendor chunk splitting for better caching. The chunk manifest is inlined into the HTML.</td>
     </tr>
+    <tr>
+      <td><code>test:e2e</code></td>
+      <td>Run Cypress end-to-end tests</td>
+    </tr>
+    <tr>
+      <td><code>test:unit</code></td>
+      <td>Run Jest unit tests</td>
+    </tr>
   </tbody>
 </table>
 
-## Tech Stack
+## ⌨️ Tech Stack
 
 <table>
   <thead>
@@ -40,23 +48,35 @@
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://ru.vuejs.org/index.html">Vue.js</a></td>
-      <td>...</td>
+      <td><a href="https://vuejs.org/index.html">Vue.js</a></td>
+      <td>Main framework for frontend development</td>
     </tr>
     <tr>
-      <td><a href="https://vuex.vuejs.org/ru/">Vuex</a></td>
-      <td>...</td>
+      <td><a href="https://vuex.vuejs.org/">Vuex</a></td>
+      <td>Centralized State Management for Vue.js</td>
+    </tr>
+    <tr>
+      <td><a href="http://router.vuejs.org/">Vue-router</a></td>
+      <td>The official router for Vue.js</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/vuelidate/vuelidate">Vuelidate</a></td>
+      <td>Model-based validation for Vue.js</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/VincentGarreau/particles.js/">particles.js</a></td>
+      <td>JavaScript library for creating particles</td>
     </tr>
   </tbody>
 </table>
 
-## Preview
+## 🖥 Preview
 <div style="text-align:center;">
-    <img src="https://i.ibb.co/vjtSHTN/app.png" alt="Planguru">
+    <img style="width: 100%" src="https://i.ibb.co/K9b8sxS/image.png" alt="Planguru">
 </div>
 
 
-## Browser support
+## 🙏 Browser support
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Opera | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/yandex/yandex_48x48.png" alt="Yandex" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Yandex |
 | --------- | --------- | --------- | --------- |--------- | --------- |
