@@ -110,6 +110,42 @@
         background-color: rgba(45, 199, 109, 0.1)
         background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0,7l3,3L10,0' transform='translate(1 1)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
 
+    +m('meeting')
+      background-image: url("/img/meeting-2.png")
+      &::before
+        background-color: $color-blue
+
+      & .account__status
+        background-color: rgba(47, 97, 213, 0.1)
+        background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0,7l3,3L10,0' transform='translate(1 1)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
+
+    +m('webinar')
+      background-image: url("/img/meeting-3.png")
+      &::before
+        background-color: $color-orange
+
+      & .account__status
+        background-color: rgba(255, 112, 82, 0.1)
+        background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0,7l3,3L10,0' transform='translate(1 1)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
+
+    +m('status')
+      background-image: url("/img/meeting-4.png")
+      &::before
+        background-color: $color-purple
+
+      & .account__status
+        background-color: rgba(117, 64, 238, 0.1)
+        background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0,7l3,3L10,0' transform='translate(1 1)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
+
+    +m('other')
+      background-image: url("/img/meeting-5.png")
+      &::before
+        background-color: $color-lightblue
+
+      & .account__status
+        background-color: rgba(63, 182, 220, 0.1)
+        background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0,7l3,3L10,0' transform='translate(1 1)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
+
   +e('theme')
     width: calc(100% - 40px)
     overflow: hidden

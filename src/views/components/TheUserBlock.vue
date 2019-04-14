@@ -36,7 +36,7 @@
                   img.account__img(src='/img/ava-4.png' width='24' height='24')
               li.account__status
                 span.account__status
-          li.account__item.account__item_project-meeting
+          li.account__item.account__item_status
             h3.account__theme Project daily stand-up
             .account__date
               time.account__time 10:00 AM

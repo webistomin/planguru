@@ -1,15 +1,17 @@
 .calendar
   margin-top: 220px
   padding-left: 32px
+  position: relative
 
   +e('current')
     position: absolute
-    top: 50%
-    left: 100px
-    width: calc(100% - 100px)
+    top: 20%
+    left: 95px
+    width: calc(100% - 95px)
     height: 1px
     background-color: $color-purple
     z-index: 2
+    box-shadow: 0 4px 6px 0 rgba(117, 64, 238, 0.2)
     +ts()
 
     &::before
@@ -20,6 +22,7 @@
       background-color: $color-purple
       border-radius: 50%
       left: 0
+      box-shadow: inherit
       +vertical-center()
 
   +e('time')
