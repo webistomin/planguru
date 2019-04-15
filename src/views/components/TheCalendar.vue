@@ -56,6 +56,13 @@
         time.calendar__time 21:30 PM
       li.calendar__item
         time.calendar__time 22:00 PM
+    ul.calendar__events
+      li.calendar__event
+        h3.calendar__title Project daily stand-up
+        .calendar__date
+          time.calendar__datetime 10:00 AM
+          span.calendar__dash &nbsp;–&nbsp;
+          time.calendar__datetime 10:30 AM
 </template>
 
 <script>
