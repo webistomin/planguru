@@ -57,17 +57,23 @@
       li.calendar__item
         time.calendar__time 22:00 PM
     ul.calendar__events
-      li.calendar__event
+      li.calendar__event.calendar__event_meeting
         h3.calendar__title Project daily stand-up
         .calendar__date
           time.calendar__datetime 10:00 AM
           span.calendar__dash &nbsp;–&nbsp;
           time.calendar__datetime 10:30 AM
+    AppAddEventButton
+    AppModalNewEvent
 </template>
 
 <script>
+import AppAddEventButton from '@/views/components/AppAddEventButton.vue';
+import AppModalNewEvent from '@/views/components/modals/AppModalNewEvent.vue';
+
 export default {
   name: 'TheCalendar',
+  components: { AppModalNewEvent, AppAddEventButton },
 };
 </script>
 

@@ -85,7 +85,6 @@
           button.reg__btn.btn.btn_orange(type='submit') Sign up
       p.reg__text.desc I already have an account.&nbsp;
         a.reg__link.link.link_purple(href='#' @click="openLoginForm") Login
-
 </template>
 
 <script>

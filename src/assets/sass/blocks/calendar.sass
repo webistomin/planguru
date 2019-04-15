@@ -8,7 +8,7 @@
     top: 20%
     left: 95px
     width: calc(100% - 95px)
-    height: 1px
+    height: 2px
     background-color: $color-purple
     z-index: 2
     box-shadow: 0 4px 6px 0 rgba(117, 64, 238, 0.2)
@@ -58,11 +58,10 @@
     width: calc(100% - 120px)
     margin-left: 120px
     margin-top: 42px
-    margin-bottom: 30px
     position: absolute
     top: 0
     left: 0
-    height: 100%
+    height: calc(100% - 42px)
 
   +e('event')
     position: absolute
@@ -70,20 +69,32 @@
     left: 0
     box-sizing: border-box
     padding: 16px 16px 16px 52px
-    background-color: rgba(45, 199, 109, 0.1)
-    border: 1px solid $color-green
     border-radius: 10px
     width: 100%
     max-width: calc(100% - 32px)
-    background-image: url("/img/meeting-1.png")
     background-repeat: no-repeat
     background-size: 24px
     background-position: 16px 16px
 
+    +m('project-meeting')
+      background-image: url("/img/meeting-1.png")
+      background-color: rgba(45, 199, 109, 0.1)
+      border: 1px solid $color-green
+
+      & .calendar__title
+        color: $color-green
+
+    +m('meeting')
+      background-image: url("/img/meeting-2.png")
+      background-color: rgba(47, 97, 213, 0.1)
+      border: 1px solid $color-blue
+
+      & .calendar__title
+        color: $color-blue
+
   +e('title')
     margin: 0
     font-size: 12px
-    color: $color-green
     font-weight: 500
     white-space: nowrap
     overflow: hidden

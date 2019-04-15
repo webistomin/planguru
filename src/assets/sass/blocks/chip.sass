@@ -1,0 +1,62 @@
+.chip
+  box-sizing: border-box
+  padding: 8px 18px 6px 40px
+  font-size: 12px
+  font-weight: 500
+  display: inline-flex
+  align-items: center
+  justify-content: flex-start
+  border-radius: 23px
+  position: relative
+
+  &::before
+    content: ""
+    position: absolute
+    left: 3px
+    top: 3px
+    width: 24px
+    height: 24px
+    border-radius: 50%
+    background-position: center
+    background-repeat: no-repeat
+    background-size: 24px 24px
+
+  +m('green')
+    background-color: rgba(45, 199, 109, 0.1)
+    color: $color-green
+
+    &::before
+      background-color: $color-green
+      background-image: url("/img/meeting-1.png")
+
+  +m('blue')
+    background-color: rgba(47, 97, 213, 0.1)
+    color: $color-blue
+
+    &::before
+      background-color: $color-blue
+      background-image: url("/img/meeting-2.png")
+
+  +m('orange')
+    background-color: rgba(255, 112, 82, 0.1)
+    color: $color-orange
+
+    &::before
+      background-color: $color-orange
+      background-image: url("/img/meeting-3.png")
+
+  +m('purple')
+    background-color: rgba(117, 64, 238, 0.1)
+    color: $color-purple
+
+    &::before
+      background-color: $color-purple
+      background-image: url("/img/meeting-4.png")
+
+  +m('lightblue')
+    background-color: rgba(63, 182, 220, 0.1)
+    color: $color-lightblue
+
+    &::before
+      background-color: $color-lightblue
+      background-image: url("/img/meeting-5.png")

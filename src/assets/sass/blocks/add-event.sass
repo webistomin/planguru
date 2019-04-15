@@ -1,0 +1,24 @@
+.add-event
+  position: fixed
+  bottom: 32px
+  right: 32px
+  box-sizing: border-box
+  width: 56px
+  height: 56px
+  border-radius: 50%
+  background-color: $color-purple
+  box-shadow: 0 4px 24px 0 rgba(117, 64, 238, 0.1)
+  outline: none
+  user-select: none
+
+  &::before,
+  &::after
+    content: ""
+    width: 16px
+    height: 2px
+    +absolute-center
+    background-color: $color-white
+    border-radius: 1px
+
+  &::after
+    transform: translate(-50%,-50%) rotate(90deg)

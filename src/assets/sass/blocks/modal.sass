@@ -1,0 +1,129 @@
+.modal
+  font-family: $font-family-project
+
+  +m('new-event')
+    margin: 0
+    padding: 0
+    height: 100%
+    top: 0
+
+    & .ant-modal-content
+      height: 100%
+
+    & .ant-modal-body
+      height: 100%
+      padding: 0
+
+  +e('inner')
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 100%
+    padding: 32px
+
+  +e('input')
+    width: 100%
+    font-size: 24px
+    line-height: 40px
+    font-weight: 500
+    border: none
+    outline: none
+    caret-color: $color-grey-second
+    color: #25265E
+
+    padding-bottom: 29px
+
+    &::placeholder
+      color: #DFDFE4
+
+  +e('form')
+    width: 100%
+
+  +e('group')
+    padding: 0
+    margin-bottom: 25px
+
+  +e('legend')
+    font-size: 14px
+    font-weight: 500
+    color: $color-grey-second
+
+  +e('btn')
+    width: 38px
+    height: 38px
+    position: relative
+    border: 2px dashed #DFDFE4
+    border-radius: 50%
+    outline: none
+
+    &::before,
+    &::after
+      content: ""
+      +absolute-center
+      background-color: #DFDFE4
+      width: 16px
+      height: 2px
+
+    &::after
+      transform: translate(-50%,-50%) rotate(90deg)
+
+  +e('date')
+    font-size: 16px
+    font-weight: 500
+    color: #25265E
+    outline: none
+
+  +e('radio')
+    +visually-hidden
+
+  +e('wrap')
+    display: flex
+    flex-wrap: wrap
+
+  +e('box')
+    margin-bottom: 16px
+
+    &:not(:last-child)
+      margin-right: 16px
+
+  +e('label')
+    cursor: pointer
+    +ts()
+
+    &:hover,
+    &:focus
+      box-shadow: 0 2px 10px 0 rgba(37, 38, 94, 0.2)
+
+    +m('disabled')
+      filter: grayscale(100%)
+
+  +e('message')
+    width: 100%
+    font-weight: 500
+    font-size: 16px
+    line-height: 1.5
+    min-height: 55px
+    border: none
+    border-bottom: 2px solid #DFDFE4
+    outline: none
+    caret-color: $color-grey-second
+    color: #25265E
+
+    &::placeholder
+      color: #DFDFE4
+
+  +e('submit')
+    border-radius: 23px
+    font-size: 16px
+    line-height: 43px
+    text-align: center
+    font-weight: 500
+    padding: 0 24px
+    background-color: rgba(45, 199, 109, 0.1)
+    color: $color-green
+    outline: none
+
+    +m('disabled')
+      opacity: 0.3
+      background-color: #DFDFE4
+      cursor: not-allowed
