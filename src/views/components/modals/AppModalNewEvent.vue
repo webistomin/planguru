@@ -1,5 +1,5 @@
 <template lang="pug">
-  AModal(
+  Modal(
     :visible="true"
     :footer="null"
     :mask="false"
@@ -79,8 +79,28 @@
               label.modal__label.chip.chip_lightblue(for="type-other") Other
         fieldset.modal__group
           legend.modal__legend White short description
-          textarea.modal__message(placeholder="Message...")
-        button.modal__submit(type="submit") Schedule meeting
+          textarea.modal__message(
+            placeholder="Message..."
+            v-model="meetingMessage"
+            )
+        button.modal__submit(
+          type="submit"
+          :class="{'modal__submit_disabled': !isFormValid}"
+          ) Schedule meeting
+        Modal(
+          :visible="true"
+          :footer="null"
+          :mask="true"
+          :closable="false"
+          wrapClassName="ant-modal-wrap_date"
+        ).modal.modal_date
+          .modal__container
+            p.modal__legend Choose date
+            DatePicker(
+              :open="true"
+              dropdownClassName="datepicker datepicker_modal"
+            )
+            Slider.modal__slider
 </template>
 
 <script>
@@ -90,7 +110,13 @@ export default {
     return {
       meetingName: '',
       meetingType: '',
+      meetingMessage: '',
     };
+  },
+  computed: {
+    isFormValid() {
+      return false;
+    },
   },
 };
 </script>
@@ -98,4 +124,5 @@ export default {
 <style lang="sass">
   @import "~@/assets/sass/blocks/modal.sass"
   @import "~@/assets/sass/blocks/chip.sass"
+  @import "~@/assets/sass/blocks/datepicker.sass"
 </style>

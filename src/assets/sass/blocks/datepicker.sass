@@ -1,0 +1,86 @@
+.datepicker
+  font-family: $font-family-project
+  font-size: 14px
+  font-weight: 500
+  color: $color-navy
+
+  +m('modal')
+    left: 20px !important
+
+    & .ant-calendar
+      box-shadow: none
+
+    & .ant-calendar-footer
+      display: none
+
+    & .ant-calendar-year-select
+      display: none
+
+    & .ant-calendar-table thead tr[role="row"]
+      border-bottom: 1px solid #DFDFE4
+
+    & .ant-calendar-input-wrap
+      visibility: hidden
+
+    & .ant-calendar
+      max-width: 280px
+      width: 100%
+
+    & .ant-calendar-next-year-btn
+      display: none
+
+    & .ant-calendar-prev-year-btn
+      display: none
+
+    & .ant-calendar-header
+      border: none
+
+    & .ant-calendar-prev-month-btn
+      left: 0
+
+    & .ant-calendar-next-month-btn
+      right: 0
+
+    & .ant-calendar-body
+      padding: 0
+
+    & .ant-calendar-date
+      width: 40px
+      height: 30px
+      line-height: 32px
+      color: $color-navy
+      user-select: none
+
+      &:hover,
+      &:focus,
+      &:active
+        background-color: transparent
+        color: $color-purple
+
+    & .ant-calendar-today .ant-calendar-date
+      color: $color-purple
+      border: none
+
+    & .ant-calendar-last-month-cell .ant-calendar-date, .ant-calendar-next-month-btn-day .ant-calendar-date
+      color: #DFDFE4
+
+    & .ant-calendar-selected-date .ant-calendar-date, .ant-calendar-selected-start-date .ant-calendar-date, .ant-calendar-selected-end-date .ant-calendar-date, .ant-calendar-selected-day .ant-calendar-date
+      color: $color-white
+      position: relative
+      background-color: transparent
+      border: none
+      z-index: 1
+
+      &::before
+        content: ""
+        position: absolute
+        width: 30px
+        height: 30px
+        +absolute-center
+        background-color: $color-purple
+        border-radius: 50%
+        z-index: -1
+
+    & .ant-calendar-header .ant-calendar-month-select
+      color: $color-purple
+
