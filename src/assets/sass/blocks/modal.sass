@@ -1,68 +1,14 @@
 .modal
   font-family: $font-family-project
 
-  +m('new-event')
-    margin: 0
-    padding: 0
-    height: 100%
-    top: 0
-
-    & .ant-modal-content
-      height: 100%
-
-    & .ant-modal-body
-      height: 100%
-      padding: 0
-
-  +m('date')
-    margin: 0
-    padding: 0
-    height: 100%
-    top: 0
-    display: flex
-    align-items: flex-end
-
-    & .ant-modal-content
-      width: 100%
-      height: 442px
-      border-top-left-radius: 10px
-      border-top-right-radius: 10px
-      box-shadow: 0 -4px 20px 0 rgba(37, 38, 94, 0.1)
-
-    & .ant-modal-body
-      height: 100%
-      padding: 25px 32px
-
-    & .ant-calendar-picker
-      visibility: hidden
-
   +e('container')
      height: 100%
      display: flex
      flex-direction: column
+     box-sizing: border-box
 
-  +e('slider')
-    margin-top: auto
-    font-family: $font-family-project
-
-    & .ant-slider-handle
-      width: 8px
-      height: 8px
-      border-radius: 50%
-      background-color: $color-white !important
-      border: 4px solid $color-purple !important
-      box-sizing: content-box
-      margin-top: -7px
-
-      &:focus
-        box-shadow: 0 0 0 5px rgba(37, 38, 94, 0.1)
-
-    & .ant-slider-track
-      height: 2px
-      background-color: $color-purple !important
-
-    & .ant-slider-rail
-      height: 2px
+     +m('padding')
+       padding: 24px 32px
 
   +e('inner')
     display: flex
@@ -92,6 +38,7 @@
   +e('group')
     padding: 0
     margin-bottom: 25px
+    border: none
 
   +e('legend')
     display: inline-block
@@ -224,3 +171,108 @@
     position: static
     padding-left: 20px
     font-size: 12px
+
+  +e('calendar')
+    max-width: 300px
+    width: 100%
+    border: none
+    box-sizing: border-box
+    padding-top: 20px
+    padding-bottom: 36px
+
+    & .day__month_btn.up
+      color: $color-purple
+
+    & .cell:not(.blank):not(.disabled).day:hover, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month:hover, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year:hover
+      border: none
+
+    & .cell.selected
+      background-color: transparent
+
+    & .cell.day-header
+      color: $color-purple
+
+    & .cell.month,
+    & .cell.year
+      text-align: left
+      border: none
+      background-color: transparent
+
+      &:hover
+        color: $color-purple
+        border: none
+
+    & .cell:not(.blank):not(.disabled).month:hover,
+    & .cell:not(.blank):not(.disabled).year:hover
+      border: none
+
+    & .cell.selected:hover
+      background-color: transparent
+
+    & .cell.month.selected
+      color: $color-purple
+
+    & .cell.day:not(.blank)
+      font-weight: 500
+      color: #25265E
+      font-size: 14px
+      position: relative
+      +ts()
+      z-index: 1
+      border: none
+
+      &::before
+        content: ""
+        +absolute-center
+        border-radius: 50%
+        width: 40px
+        height: 40px
+        background-color: $color-purple
+        transform: translate(-50%,-50%) scale(0)
+        transform-origin: center
+        +ts()
+        z-index: -1
+
+      &:hover
+        color: $color-white
+
+        &::before
+          transform: translate(-50%,-50%) scale(1)
+
+      &.selected.day:not(.blank)
+        background-color: transparent
+        color: $color-white
+
+        &::before
+          transform: translate(-50%,-50%) scale(1)
+
+        &:hover
+          background-color: transparent
+
+  +e('slider')
+
+    & .vue-slider-process
+      background-color: $color-purple
+
+    & .vue-slider-dot-tooltip-inner
+      background-color: transparent
+      color: #787993
+      font-size: 12px
+
+    & .vue-slider-dot-tooltip-inner-top::after,
+    & .vue-slider-dot-tooltip-inner-bottom::after
+      display: none
+
+    & .vue-slider-dot-tooltip-top
+      top: -2px
+
+    & .vue-slider-dot-tooltip-bottom
+      bottom: -2px
+
+    & .vue-slider-dot-handle-focus
+      box-shadow: 0 0 1px 2px rgba(37, 38, 94, 0.2)
+
+
+
+
+

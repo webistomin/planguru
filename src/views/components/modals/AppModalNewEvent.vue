@@ -1,10 +1,8 @@
 <template lang="pug">
   Modal(
-    :visible="true"
-    :footer="null"
-    :mask="false"
-    :closable="false"
-    wrapClassName="ant-modal-wrap_new-event"
+    name="eventModal"
+    width="100%"
+    height="100%"
   ).modal.modal_new-event
     .modal__inner
       button.modal__close(type="button")
@@ -23,7 +21,7 @@
           .modal__holder
             legend.modal__legend Choose date
             p.modal__error.error
-          button.modal__date(type="button") Today, 08:00 — 09:00 AM
+          button.modal__date(type="button" @click="openDateModal") Today, 08:00 — 09:00 AM
         fieldset.modal__group
           legend.modal__legend Choose meeting type
           .modal__wrap
@@ -88,28 +86,27 @@
           :class="{'modal__submit_disabled': !isFormValid}"
           ) Schedule meeting
         Modal(
-          :visible="true"
-          :footer="null"
-          :mask="true"
-          :closable="false"
-          wrapClassName="ant-modal-wrap_date"
+          name="dateModal"
+          :pivotY="1.0"
+          height="442"
+          width="100%"
         ).modal.modal_date
-          .modal__container
-            p {{meetingStartTime}}
+          .modal__container.modal__container_padding
             p.modal__legend Choose date
-            DatePicker(
-              :open="true"
-              dropdownClassName="datepicker datepicker_modal"
-            )
-            Slider(
-              range
-              :tooltipVisible="true"
-              :step="0.5"
+            datepicker(:inline="true" calendar-class="modal__calendar")
+            RangeSlider(
+              v-model="meetingStartTime"
+              height="2px"
               :min="9"
               :max="22"
-              v-model="meetingStartTime"
-              :tipFormatter="formatter"
-            ).modal__slider
+              :interval="0.5"
+              :min-range="0.5"
+              :enable-cross="false"
+              tooltip="always"
+              :tooltipFormatter="formatter"
+              :tooltip-placement="['top', 'bottom']"
+              :useKeyboard="true"
+              ).modal__slider
 </template>
 
 <script>
@@ -117,6 +114,9 @@ import timeConverter from '@/assets/js/timeConverter24to12';
 
 export default {
   name: 'AppModalNewEvent',
+  mounted() {
+    this.$modal.show('eventModal');
+  },
   data() {
     return {
       meetingName: '',
@@ -126,6 +126,9 @@ export default {
     };
   },
   methods: {
+    openDateModal() {
+      this.$modal.show('dateModal');
+    },
     formatter(value) {
       return timeConverter(value);
     },
