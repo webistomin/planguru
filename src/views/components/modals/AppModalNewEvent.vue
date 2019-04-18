@@ -3,6 +3,8 @@
     name="eventModal"
     width="100%"
     height="100%"
+    :scrollable="true"
+    :adaptive="true"
   ).modal.modal_new-event
     .modal__inner
       button.modal__close(type="button")
@@ -87,9 +89,8 @@
           ) Schedule meeting
         Modal(
           name="dateModal"
-          :pivotY="1.0"
-          height="442"
-          width="100%"
+          :scrollable="true"
+          :adaptive="true"
         ).modal.modal_date
           .modal__container.modal__container_padding
             p.modal__legend Choose date
@@ -100,12 +101,13 @@
               :min="9"
               :max="22"
               :interval="0.5"
-              :min-range="0.5"
+              :min-range="1"
               :enable-cross="false"
               tooltip="always"
               :tooltipFormatter="formatter"
               :tooltip-placement="['top', 'bottom']"
               :useKeyboard="true"
+              :marks="[12, 15, 18, 21]"
               ).modal__slider
 </template>
 
@@ -122,7 +124,7 @@ export default {
       meetingName: '',
       meetingType: '',
       meetingMessage: '',
-      meetingStartTime: [9, 10],
+      meetingStartTime: [9, 22],
     };
   },
   methods: {
