@@ -5,6 +5,7 @@
     height="100%"
     :scrollable="true"
     :adaptive="true"
+    transition="nice-modal-fade"
   ).modal.modal_new-event
     .modal__inner
       button.modal__close(type="button")
@@ -91,12 +92,14 @@
           name="dateModal"
           :scrollable="true"
           :adaptive="true"
+          transition="nice-modal-fade"
         ).modal.modal_date
+          AppCloseModalBtn(:modal-name="'dateModal'")
           .modal__container.modal__container_padding
             p.modal__legend Choose date
             datepicker(:inline="true" calendar-class="modal__calendar")
             RangeSlider(
-              v-model="meetingStartTime"
+              v-model="meetingTime"
               height="2px"
               :min="9"
               :max="22"
@@ -113,9 +116,11 @@
 
 <script>
 import timeConverter from '@/assets/js/timeConverter24to12';
+import AppCloseModalBtn from '@/views/components/AppCloseModalBtn.vue';
 
 export default {
   name: 'AppModalNewEvent',
+  components: { AppCloseModalBtn },
   mounted() {
     this.$modal.show('eventModal');
   },
@@ -124,7 +129,7 @@ export default {
       meetingName: '',
       meetingType: '',
       meetingMessage: '',
-      meetingStartTime: [9, 22],
+      meetingTime: [9, 22],
     };
   },
   methods: {

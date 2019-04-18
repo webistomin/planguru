@@ -16,7 +16,7 @@
         min-height: auto
 
   +e('container')
-     height: 100%
+     height: auto
      display: flex
      flex-direction: column
      box-sizing: border-box
@@ -30,6 +30,7 @@
     justify-content: center
     height: 100%
     padding: 32px
+    box-sizing: border-box
 
   +e('input')
     width: 100%
@@ -308,6 +309,28 @@
       background-color: $color-white
       border-radius: 50%
       border: 4px solid $color-purple
+
+  +e('close')
+    width: 30px
+    height: 30px
+    position: absolute
+    top: 20px
+    right: 30px
+    z-index: 1
+
+    &::before,
+    &::after
+      content: ""
+      +absolute-center
+      width: 50%
+      height: 2px
+      background-color: $color-navy
+
+    &::after
+      transform: translate(-50%,-50%) rotate(45deg)
+
+    &::before
+      transform: translate(-50%,-50%) rotate(-45deg)
 
 
 
