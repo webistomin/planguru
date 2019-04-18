@@ -95,15 +95,26 @@
           wrapClassName="ant-modal-wrap_date"
         ).modal.modal_date
           .modal__container
+            p {{meetingStartTime}}
             p.modal__legend Choose date
             DatePicker(
               :open="true"
               dropdownClassName="datepicker datepicker_modal"
             )
-            Slider.modal__slider
+            Slider(
+              range
+              :tooltipVisible="true"
+              :step="0.5"
+              :min="9"
+              :max="22"
+              v-model="meetingStartTime"
+              :tipFormatter="formatter"
+            ).modal__slider
 </template>
 
 <script>
+import timeConverter from '@/assets/js/timeConverter24to12';
+
 export default {
   name: 'AppModalNewEvent',
   data() {
@@ -111,7 +122,13 @@ export default {
       meetingName: '',
       meetingType: '',
       meetingMessage: '',
+      meetingStartTime: [9, 10],
     };
+  },
+  methods: {
+    formatter(value) {
+      return timeConverter(value);
+    },
   },
   computed: {
     isFormValid() {
