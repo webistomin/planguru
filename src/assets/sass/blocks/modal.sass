@@ -441,6 +441,52 @@
 
   +e('col')
     display: flex
+    align-items: center
+    width: 100%
+
+  +e('state')
+    margin-left: auto
+    font-weight: 500
+    font-size: 14px
+    line-height: 28px
+    padding-right: 10px
+    padding-left: 24px
+    position: relative
+    border-radius: 14px
+    height: 28px
+    background-color: rgba(117, 64, 238, 0.1)
+    color: $color-purple
+    outline: none
+
+    &::before,
+    &::after
+      content: ""
+      width: 12px
+      height: 2px
+      position: absolute
+      background-color: $color-purple
+      top: 11px
+      left: 8px
+      border-radius: 1px
+
+    &::after
+      transform: rotate(90deg)
+
+
+    +m('added')
+      background-color: rgb(233, 249, 240)
+      color: $color-green
+
+      &::before
+        top: 6px
+        left: 8px
+        height: 12px
+        background-color: transparent
+        background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='13.5' height='12.5' viewBox='0 0 13.5 12.5'%3E%3Cpath d='M0,6.938,4.114,11,12,0' transform='translate(0.75 0.75)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='1.5'/%3E%3C/svg%3E")
+        border-radius: 0
+
+      &::after
+        display: none
 
 
 

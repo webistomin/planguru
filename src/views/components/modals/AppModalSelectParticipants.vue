@@ -37,7 +37,10 @@
             .modal__desc
               h3.modal__name {{person.fullname}}
               p.modal__post {{person.post }}
-            button.modal__state(type="button")
+            button.modal__state(
+              type="button"
+              :class="{'modal__state_added': person.isAdded}"
+              ) {{person.isAdded ? 'Added' : 'Add'}}
 </template>
 
 <script>
