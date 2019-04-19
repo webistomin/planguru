@@ -19,7 +19,7 @@
           .modal__holder
             legend.modal__legend Invite people
             p.modal__error.error
-          button.modal__btn(type="button")
+          button.modal__btn(type="button" @click="openSelectModal")
         fieldset.modal__group
           .modal__holder
             legend.modal__legend Choose date
@@ -28,56 +28,20 @@
         fieldset.modal__group
           legend.modal__legend Choose meeting type
           .modal__wrap
-            .modal__box
+            .modal__box(v-for="item of meetingTypes")
               input.modal__radio(
                 type="radio"
                 name="meeting-type"
-                id="type-project-meeting"
-                value="project-meeting"
+                :id="`type-${getFormattedMeetingName(item.name)}`"
+                :value="getFormattedMeetingName(item.name)"
                 v-model="meetingType"
-                :class="{'modal__radio_disabled': meetingType && meetingType !== 'project-meeting'}"
+                :class="{'modal__radio_disabled': meetingType && \
+                  meetingType !== getFormattedMeetingName(item.name)}"
                 )
-              label.modal__label.chip.chip_green(for="type-project-meeting") Project meeting
-            .modal__box
-              input.modal__radio(
-                type="radio"
-                name="meeting-type"
-                id="type-meeting"
-                value="meeting"
-                v-model="meetingType"
-                :class="{'modal__radio_disabled': meetingType && meetingType !== 'meeting'}"
-                )
-              label.modal__label.chip.chip_blue(for="type-meeting") Meeting
-            .modal__box
-              input.modal__radio(
-                type="radio"
-                name="meeting-type"
-                id="type-webinar"
-                value="webinar"
-                v-model="meetingType"
-                :class="{'modal__radio_disabled': meetingType && meetingType !== 'webinar'}"
-                )
-              label.modal__label.chip.chip_orange(for="type-webinar") Webinar
-            .modal__box
-              input.modal__radio(
-                type="radio"
-                name="meeting-type"
-                id="type-status"
-                value="status"
-                v-model="meetingType"
-                :class="{'modal__radio_disabled': meetingType && meetingType !== 'status'}"
-                )
-              label.modal__label.chip.chip_purple(for="type-status") Status
-            .modal__box
-              input.modal__radio(
-                type="radio"
-                name="meeting-type"
-                id="type-other"
-                value="other"
-                v-model="meetingType"
-                :class="{'modal__radio_disabled': meetingType && meetingType !== 'other'}"
-                )
-              label.modal__label.chip.chip_lightblue(for="type-other") Other
+              label.modal__label.chip(
+                :for="`type-${getFormattedMeetingName(item.name)}`"
+                :class="`chip_${getFormattedMeetingName(item.name)}`"
+                ) {{item.name}}
         fieldset.modal__group
           legend.modal__legend White short description
           textarea.modal__message(
@@ -89,20 +53,44 @@
           :class="{'modal__submit_disabled': !isFormValid}"
           ) Schedule meeting
         AppModalDatepick
+        AppModalSelectParticipants
 </template>
 
 <script>
 import AppCloseModalBtn from '@/views/components/AppCloseModalBtn.vue';
 import AppModalDatepick from '@/views/components/modals/AppModalDatepick.vue';
+import AppModalSelectParticipants from '@/views/components/modals/AppModalSelectParticipants.vue';
 
 export default {
   name: 'AppModalNewEvent',
-  components: { AppModalDatepick, AppCloseModalBtn },
+  components: { AppModalSelectParticipants, AppModalDatepick, AppCloseModalBtn },
   mounted() {
     this.$modal.show('eventModal');
   },
   data() {
     return {
+      meetingTypes: [
+        {
+          id: 0,
+          name: 'Project meeting',
+        },
+        {
+          id: 1,
+          name: 'Meeting',
+        },
+        {
+          id: 2,
+          name: 'Webinar',
+        },
+        {
+          id: 3,
+          name: 'Status',
+        },
+        {
+          id: 4,
+          name: 'Other',
+        },
+      ],
       meetingName: '',
       meetingType: '',
       meetingMessage: '',
@@ -111,6 +99,12 @@ export default {
   methods: {
     openDateModal() {
       this.$modal.show('dateModal');
+    },
+    openSelectModal() {
+      this.$modal.show('selectModal');
+    },
+    getFormattedMeetingName(name) {
+      return [...name.toLowerCase().trim().split(' ')].join('-');
     },
   },
   computed: {

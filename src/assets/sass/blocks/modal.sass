@@ -23,6 +23,7 @@
 
   +e('container')
      height: auto
+     min-height: 100%
      display: flex
      flex-direction: column
      box-sizing: border-box
@@ -201,6 +202,12 @@
     padding-top: 20px
     padding-bottom: 36px
 
+    & header .next:after
+      border-left-color: $color-purple
+
+    & header .prev:after
+      border-right-color: $color-purple
+
     & .day__month_btn.up
       color: $color-purple
 
@@ -215,7 +222,6 @@
 
     & .cell.month,
     & .cell.year
-      text-align: left
       border: none
       background-color: transparent
 
@@ -272,6 +278,8 @@
           background-color: transparent
 
   +e('slider')
+    width: calc(100% - 20px) !important
+    margin: auto auto 10px
 
     & .vue-slider-process
       background-color: $color-purple
@@ -338,6 +346,102 @@
 
     &::before
       transform: translate(-50%,-50%) rotate(-45deg)
+
+  +e('select')
+    margin: 16px 0
+
+    & .vs__open-indicator
+      fill: #DFDFE4
+
+    & .vs__deselect svg
+      +ts()
+
+    & .vs__deselect:hover svg
+      fill: $color-purple
+
+    & .vs__dropdown-toggle
+      min-height: 55px
+      padding: 14px 0
+      border: none
+      border-bottom: 1px solid #DFDFE4
+      border-radius: 0
+
+    & .vs__selected-options
+      padding: 0
+
+    & .vs__search
+      padding: 0
+      border: none
+      margin: 0
+
+      &::placeholder
+        color: #DFDFE4
+        font-size: 16px
+        font-weight: 500
+
+    & .vs__selected
+      background-color: transparent
+      border: none
+      padding: 0
+      margin: 0 10px 0 0
+
+      & img
+        border-radius: 50%
+        border: 1px solid $color-purple
+
+    & .vs__dropdown-menu
+      padding: 0
+
+      & .modal__option
+        display: flex
+        align-items: center
+
+        & img
+          margin-right: 10px
+          border-radius: 50%
+          border: 1px solid $color-purple
+          +ts()
+
+      & li
+        padding: 10px
+        color: $color-purple
+        +ts()
+
+      & li.vs__dropdown-option--selected
+        color: $color-green
+
+        & img
+          border-color: $color-green
+
+      & li.vs__dropdown-option--highlight
+        background-color: rgba(37, 38, 94, 0.1)
+
+  +e('person')
+    display: flex
+
+    &:not(:last-child)
+      margin-bottom: 24px
+
+  +e('name')
+    margin: 0
+    font-size: 14px
+    font-weight: 500
+    color: #25265E
+
+  +e('post')
+    color: #787993
+    font-size: 12px
+    font-weight: 500
+
+  +e('figure')
+    margin-right: 12px
+
+  +e('persons')
+    padding-top: 14px
+
+  +e('col')
+    display: flex
+
 
 
 

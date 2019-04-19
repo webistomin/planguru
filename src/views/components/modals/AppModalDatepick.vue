@@ -1,15 +1,16 @@
 <template lang="pug">
-  Modal(
+  Modal.modal.modal_date(
     name="dateModal"
     :scrollable="true"
     :adaptive="true"
+    height="auto"
     transition="nice-modal-fade"
-  ).modal.modal_date
+  )
     AppCloseModalBtn(:modal-name="'dateModal'")
     .modal__container.modal__container_padding
       p.modal__legend Choose date
-      datepicker(:inline="true" calendar-class="modal__calendar")
-      RangeSlider(
+      Datepicker(:inline="true" calendar-class="modal__calendar")
+      RangeSlider.modal__slider(
         v-model="meetingTime"
         height="2px"
         :min="9"
@@ -22,7 +23,7 @@
         :tooltip-placement="['top', 'bottom']"
         :useKeyboard="true"
         :marks="[12, 15, 18, 21]"
-      ).modal__slider
+      )
 </template>
 
 <script>
