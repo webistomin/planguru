@@ -3,6 +3,7 @@
     @click="closeModal"
     type="button"
     :aria-label="'close ' + modalName"
+    :class="{'modal__close_arrow': isArrow}"
     )
 </template>
 
@@ -13,6 +14,10 @@ export default {
     modalName: {
       type: String,
       default: '',
+    },
+    isArrow: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {

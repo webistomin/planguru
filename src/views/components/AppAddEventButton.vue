@@ -1,10 +1,15 @@
 <template lang="pug">
-  button.add-event(type="button")
+  button.add-event(type="button" @click="openModal")
 </template>
 
 <script>
 export default {
   name: 'AppAddEventButton',
+  methods: {
+    openModal() {
+      this.$modal.show('eventModal');
+    },
+  },
 };
 </script>
 

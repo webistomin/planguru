@@ -8,7 +8,7 @@
     transition="nice-modal-fade"
   ).modal.modal_new-event
     .modal__inner
-      button.modal__close(type="button")
+      AppCloseModalBtn(:modalName="'eventModal'" :isArrow="true")
       form.modal__form
         input.modal__input(
           type="text"

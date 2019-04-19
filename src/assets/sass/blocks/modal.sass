@@ -3,6 +3,7 @@
 
   +m('new-event')
     & .v--modal-box.v--modal
+      display: flex
       min-height: 100%
       top: 0 !important
       margin-bottom: 0
@@ -23,6 +24,7 @@
 
   +e('container')
      height: auto
+     width: 100%
      min-height: 100%
      display: flex
      flex-direction: column
@@ -33,7 +35,7 @@
 
   +e('inner')
     display: flex
-    align-items: center
+    flex-direction: column
     justify-content: center
     min-height: 100%
     padding: 32px
@@ -76,6 +78,7 @@
     border: 2px dashed #DFDFE4
     border-radius: 50%
     outline: none
+    +ts()
 
     &::before,
     &::after
@@ -84,9 +87,17 @@
       background-color: #DFDFE4
       width: 16px
       height: 2px
+      +ts()
 
     &::after
       transform: translate(-50%,-50%) rotate(90deg)
+
+    &:hover,
+    &:focus
+      border-color: $color-purple
+      &::before,
+      &::after
+        background-color: $color-purple
 
   +e('date')
     font-size: 16px
@@ -94,6 +105,7 @@
     color: #DFDFE4
     outline: none
     position: relative
+    +ts()
 
     &::before
       content: ""
@@ -105,6 +117,10 @@
       background-size: contain
       background-position: center
       background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M4,0,0,4,4,8' transform='translate(1 5) rotate(-90)' fill='none' stroke='%23DFDFE4' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
+
+    &:hover,
+    &:focus
+      color: $color-purple
 
   +e('radio')
     +visually-hidden
@@ -332,6 +348,7 @@
     top: 20px
     right: 30px
     z-index: 1
+    outline: none
 
     &::before,
     &::after
@@ -340,12 +357,31 @@
       width: 50%
       height: 2px
       background-color: $color-navy
+      +ts()
 
     &::after
       transform: translate(-50%,-50%) rotate(45deg)
 
     &::before
       transform: translate(-50%,-50%) rotate(-45deg)
+
+    &:hover
+      &::before,
+      &::after
+        background-color: $color-purple
+
+    +m('arrow')
+      width: 25px
+      height: 12px
+      top: auto
+      right: auto
+      position: static
+      background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='12' viewBox='0 0 25 12'%3E%3Cg transform='translate(1 1)'%3E%3Cpath d='M5,0,0,5l5,5' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3Cpath d='M0,1H22' transform='translate(1 4)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E")
+      margin-bottom: 22px
+
+      &::before,
+      &::after
+        display: none
 
   +e('select')
     margin: 16px 0
@@ -373,6 +409,9 @@
       padding: 0
       border: none
       margin: 0
+
+      &::-webkit-search-cancel-button
+        appearance: none
 
       &::placeholder
         color: #DFDFE4

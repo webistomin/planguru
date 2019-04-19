@@ -10,6 +10,7 @@
   box-shadow: 0 4px 24px 0 rgba(117, 64, 238, 0.1)
   outline: none
   user-select: none
+  +ts()
 
   &::before,
   &::after
@@ -22,3 +23,10 @@
 
   &::after
     transform: translate(-50%,-50%) rotate(90deg)
+
+  &:hover,
+  &:focus
+    transform: scale(1.1)
+
+  &:active
+    transform: scale(0.95)
