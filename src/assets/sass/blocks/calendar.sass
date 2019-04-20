@@ -11,7 +11,7 @@
     height: 2px
     background-color: $color-purple
     z-index: 2
-    box-shadow: 0 4px 6px 0 rgba(117, 64, 238, 0.2)
+    box-shadow: 0 4px 6px 0 $color-purple-opacity
     +ts()
 
     &::before
@@ -78,7 +78,7 @@
 
     +m('project-meeting')
       background-image: url("/img/meeting-1.png")
-      background-color: rgba(45, 199, 109, 0.1)
+      background-color: $color-green-opacity
       border: 1px solid $color-green
 
       & .calendar__title
@@ -86,7 +86,7 @@
 
     +m('meeting')
       background-image: url("/img/meeting-2.png")
-      background-color: rgba(47, 97, 213, 0.1)
+      background-color: $color-blue-opacity
       border: 1px solid $color-blue
 
       & .calendar__title
