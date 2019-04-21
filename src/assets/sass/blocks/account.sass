@@ -43,6 +43,8 @@
     text-align: right
 
   +e('userpic')
+    width: 40px
+    height: 40px
     border-radius: 50%
     border: 1px solid $color-grey-border
     +ts()
@@ -102,7 +104,7 @@
       border-bottom-left-radius: 5px
 
     +m('project-meeting')
-      background-image: url("/img/meeting-1.png")
+      background-image: url("/img/svg-icons/icon-project.svg")
       &::before
         background-color: $color-green
 
@@ -111,7 +113,7 @@
         background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0,7l3,3L10,0' transform='translate(1 1)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
 
     +m('meeting')
-      background-image: url("/img/meeting-2.png")
+      background-image: url("/img/svg-icons/icon-meeting.svg")
       &::before
         background-color: $color-blue
 
@@ -120,7 +122,7 @@
         background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0,7l3,3L10,0' transform='translate(1 1)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
 
     +m('webinar')
-      background-image: url("/img/meeting-3.png")
+      background-image: url("/img/svg-icons/icon-webinar.svg")
       &::before
         background-color: $color-orange
 
@@ -129,7 +131,7 @@
         background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0,7l3,3L10,0' transform='translate(1 1)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
 
     +m('status')
-      background-image: url("/img/meeting-4.png")
+      background-image: url("/img/svg-icons/icon-status.svg")
       &::before
         background-color: $color-purple
 
@@ -138,7 +140,7 @@
         background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0,7l3,3L10,0' transform='translate(1 1)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
 
     +m('other')
-      background-image: url("/img/meeting-5.png")
+      background-image: url("/img/svg-icons/icon-other.svg")
       &::before
         background-color: $color-lightblue
 
@@ -187,4 +189,6 @@
     flex-shrink: 0
 
   +e('figure')
+    width: 28px
+    height: 28px
     border-radius: 50%

@@ -9,7 +9,7 @@
             span.account__decor Patryk
           a.account__userlink.account__userlink_notification(href="#")
             figure.account__userpic
-              img.account__img(src='/img/avatar.png' width='40' height='40')
+              img.account__img(src='/img/avatars/avatar-16.png' width='129' height='129')
       .account__meetings
         .account__heading
           h2.account__title.title Meetings
@@ -24,16 +24,16 @@
             ul.account__participants
               li.account__participant
                 figure.account__figure
-                  img.account__img(src='/img/ava-1.png' width='24' height='24')
+                  img.account__img(src='/img/avatars/avatar-1.png' width='129' height='129')
               li.account__participant
                 figure.account__figure
-                  img.account__img(src='/img/ava-2.png' width='24' height='24')
+                  img.account__img(src='/img/avatars/avatar-2.png' width='129' height='129')
               li.account__participant
                 figure.account__figure
-                  img.account__img(src='/img/ava-3.png' width='24' height='24')
+                  img.account__img(src='/img/avatars/avatar-3.png' width='129' height='129')
               li.account__participant
                 figure.account__figure
-                  img.account__img(src='/img/ava-4.png' width='24' height='24')
+                  img.account__img(src='/img/avatars/avatar-4.png' width='129' height='129')
               li.account__status
                 span.account__status
           li.account__item.account__item_status
@@ -45,16 +45,16 @@
             ul.account__participants
               li.account__participant
                 figure.account__figure
-                  img.account__img(src='/img/ava-1.png' width='24' height='24')
+                  img.account__img(src='/img/avatars/avatar-5.png' width='129' height='129')
               li.account__participant
                 figure.account__figure
-                  img.account__img(src='/img/ava-2.png' width='24' height='24')
+                  img.account__img(src='/img/avatars/avatar-6.png' width='129' height='129')
               li.account__participant
                 figure.account__figure
-                  img.account__img(src='/img/ava-3.png' width='24' height='24')
+                  img.account__img(src='/img/avatars/avatar-7.png' width='129' height='129')
               li.account__participant
                 figure.account__figure
-                  img.account__img(src='/img/ava-4.png' width='24' height='24')
+                  img.account__img(src='/img/avatars/avatar-8.png' width='129' height='129')
               li.account__status
                 span.account__status
 </template>
