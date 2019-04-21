@@ -13,15 +13,31 @@
         :isArrow="true"
         )
       form.modal__form(@submit.prevent="onSubmit")
+        .modal__holder
+          p(:class="{\
+                'error_visible':!$v.meetingName.required && $v.meetingName.$dirty, \
+                'error_shake': isInvalid\
+                }"
+            v-if='!$v.meetingName.required'
+          ).modal__error.error  Please, type name of meeting
+          p(:class="{\
+                'error_visible':!$v.meetingName.minLength && $v.meetingName.$dirty, \
+                'error_shake': isInvalid\
+                }"
+          ).modal__error.error  Name must be more than 4 characters
         input.modal__input(
           type="text"
           placeholder="Name your meeting"
-          v-model="meetingName"
+          v-model.trim.lazy="$v.meetingName.$model"
           autofocus)
         fieldset.modal__group
           .modal__holder
             legend.modal__legend Invite people
-            p.modal__error.error
+            p(:class="{\
+                'error_visible':!$v.meetingParticipants.required && isParticipantsModalDirty, \
+                'error_shake': isInvalid\
+                }"
+            ).modal__error.error  Please, invite someone
           .modal__box
             ul(v-if='meetingParticipants').modal__selected-peoples
               li(v-for="person of meetingParticipants").modal__selected-people
@@ -36,7 +52,11 @@
         fieldset.modal__group
           .modal__holder
             legend.modal__legend Choose date
-            p.modal__error.error
+            p(:class="{\
+                'error_visible':!$v.meetingDate.required && isDateModalDirty, \
+                'error_shake': isInvalid\
+                }"
+            ).modal__error.error  Please, select meeting date
           button.modal__date(
             type="button"
             @click="openDateModal"
@@ -48,7 +68,13 @@
               height="12"
             )
         fieldset.modal__group
-          legend.modal__legend Choose meeting type
+          .modal__holder
+            legend.modal__legend Choose meeting type
+            p(:class="{\
+              'error_visible':!$v.meetingType.required && $v.meetingType.$dirty, \
+              'error_shake': isInvalid\
+              }"
+            ).modal__error.error  Please, select meeting date
           .modal__wrap
             .modal__box(v-for="item of meetingTypes")
               input.modal__radio(
@@ -56,7 +82,7 @@
                 name="meeting-type"
                 :id="`type-${getFormattedMeetingName(item.name)}`"
                 :value="getFormattedMeetingName(item.name)"
-                v-model="meetingType"
+                v-model.trim.lazy="$v.meetingType.$model"
                 :class="{'modal__radio_disabled': meetingType && \
                   meetingType !== getFormattedMeetingName(item.name)}"
                 )
@@ -65,10 +91,22 @@
                 :class="`chip_${getFormattedMeetingName(item.name)}`"
                 ) {{item.name}}
         fieldset.modal__group
-          legend.modal__legend White short description
+          .modal__holder
+            legend.modal__legend White short description
+            p(:class="{\
+                'error_visible':!$v.meetingMessage.required && $v.meetingMessage.$dirty, \
+                'error_shake': isInvalid\
+                }"
+            v-if='!$v.meetingMessage.required'
+            ).modal__error.error  Please, type a message
+            p(:class="{\
+                'error_visible':!$v.meetingMessage.minLength && $v.meetingMessage.$dirty, \
+                'error_shake': isInvalid\
+                }"
+            ).modal__error.error Message must be more than 5 characters
           textarea-autosize.modal__message(
             placeholder="Message..."
-            v-model="meetingMessage"
+            v-model.trim.lazy="$v.meetingMessage.$model"
             :max-height="350"
             )
         button.modal__submit(
@@ -80,6 +118,7 @@
 </template>
 
 <script>
+import { required, minLength } from 'vuelidate/lib/validators';
 import timeConverter from '@/assets/js/timeConverter24to12';
 import AppCloseModalBtn from '@/views/components/AppCloseModalBtn.vue';
 import AppModalDatepick from '@/views/components/modals/AppModalDatepick.vue';
@@ -121,8 +160,33 @@ export default {
       meetingDate: null,
       meetingTime: null,
       meetingParticipants: null,
+      isParticipantsModalDirty: false,
+      isDateModalDirty: false,
       today: new Date(),
+      isInvalid: false,
     };
+  },
+  validations: {
+    meetingName: {
+      required,
+      minLength: minLength(4),
+    },
+    meetingType: {
+      required,
+    },
+    meetingDate: {
+      required,
+    },
+    meetingTime: {
+      required,
+    },
+    meetingParticipants: {
+      required,
+    },
+    meetingMessage: {
+      required,
+      minLength: minLength(5),
+    },
   },
   methods: {
     openDateModal() {
@@ -135,9 +199,11 @@ export default {
       return [...name.toLowerCase().trim().split(' ')].join('-');
     },
     onSendMeetingDateAndTime(datetimeArray) {
+      this.isDateModalDirty = true;
       [this.meetingTime, this.meetingDate] = datetimeArray;
     },
     onSendParticipants(participantsArray) {
+      this.isParticipantsModalDirty = true;
       this.meetingParticipants = participantsArray;
     },
     onSubmit() {
@@ -147,6 +213,15 @@ export default {
       console.log(this.meetingDate);
       console.log(this.meetingTime);
       console.log(this.meetingParticipants);
+      this.$v.$touch();
+      this.isParticipantsModalDirty = true;
+      this.isDateModalDirty = true;
+      if (this.$v.$invalid) {
+        this.isInvalid = true;
+        setTimeout(() => {
+          this.isInvalid = false;
+        }, 300);
+      }
     },
   },
   computed: {
