@@ -214,14 +214,23 @@
     text-align: center
     font-weight: 500
     padding: 0 24px
-    background-color: $color-green-opacity
     color: $color-green
     outline: none
+    +ts()
 
     +m('disabled')
       opacity: 0.3
       background-color: $color-lightgrey
       cursor: not-allowed
+
+    +m('valid')
+      opacity: 1
+      cursor: pointer
+      background-color: $color-green-opacity
+
+      &:hover,
+      &:focus
+        box-shadow: 0 3px 10px 0 $color-navy-opacity
 
   +e('holder')
     display: flex

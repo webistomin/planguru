@@ -111,7 +111,8 @@
             )
         button.modal__submit(
           type="submit"
-          :class="{'modal__submit_disabled': !isFormValid}"
+          :class="{'modal__submit_disabled': !isFormValid,\
+            'modal__submit_valid': !$v.$invalid}"
           ) Schedule meeting
         AppModalDatepick(@onSendMeetingDateAndTime="onSendMeetingDateAndTime")
         AppModalSelectParticipants(@onSendParticipants="onSendParticipants")
@@ -164,6 +165,7 @@ export default {
       isDateModalDirty: false,
       today: new Date(),
       isInvalid: false,
+      isSubmitted: false,
     };
   },
   validations: {
@@ -221,6 +223,8 @@ export default {
         setTimeout(() => {
           this.isInvalid = false;
         }, 300);
+      } else {
+        this.isSubmitted = true;
       }
     },
   },
