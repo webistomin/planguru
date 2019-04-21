@@ -1,7 +1,7 @@
-export default function timeConverter(time24) {
+export default function timeConverter(time24, withoutMeridiem = false) {
   const isInteger = time24 % 1 === 0;
   const getMeridiem = time24 >= 12 ? 'PM' : 'AM';
-  const leadingZero = time24 < 10 ? '0' : '';
+  const leadingZero = (time24 >= 13 && time24 < 22) || (time24 < 10) ? '0' : '';
   let hour = null;
   let minutes = null;
 
@@ -18,5 +18,8 @@ export default function timeConverter(time24) {
     minutes = '30';
   }
 
+  if (withoutMeridiem) {
+    return `${leadingZero}${hour}:${minutes}`;
+  }
   return `${leadingZero}${hour}:${minutes} ${getMeridiem}`;
 }

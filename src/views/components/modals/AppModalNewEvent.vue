@@ -80,6 +80,7 @@
 </template>
 
 <script>
+import timeConverter from '@/assets/js/timeConverter24to12';
 import AppCloseModalBtn from '@/views/components/AppCloseModalBtn.vue';
 import AppModalDatepick from '@/views/components/modals/AppModalDatepick.vue';
 import AppModalSelectParticipants from '@/views/components/modals/AppModalSelectParticipants.vue';
@@ -153,11 +154,28 @@ export default {
       return false;
     },
     getFormattedDate() {
+      const currentHour = this.today.getHours();
+      const currentMinutes = this.today.getMinutes();
+      const currentDate = this.today.toLocaleDateString();
+      const getCurrentMeridiem = currentHour >= 12 ? 'PM' : 'AM';
+
       if (this.meetingTime === null || this.meetingDate === null) {
-        return `Today, ${this.today.getHours()}:00 — ${this.today.getHours() + 1}:00`;
+        return `Today, ${currentHour}:${currentMinutes < 30 ? '30' : '00'} — ${currentHour + 1}:00 ${getCurrentMeridiem}`;
+      }
+      const selectedDate = this.meetingDate.toLocaleDateString();
+      let dayOfMeeting = null;
+
+      if (selectedDate === currentDate) {
+        dayOfMeeting = 'Today';
+      } else {
+        dayOfMeeting = selectedDate;
       }
       const [startHour, endHour] = this.meetingTime;
-      return `Today, ${startHour} — ${endHour}`;
+      const formattedStartHour = timeConverter(startHour, true);
+      const formattedEndHour = timeConverter(endHour, true);
+      const getMeridiem = endHour >= 12 ? 'PM' : 'AM';
+
+      return `${dayOfMeeting}, ${formattedStartHour} — ${formattedEndHour} ${getMeridiem}`;
     },
   },
 };
