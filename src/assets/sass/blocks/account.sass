@@ -110,7 +110,9 @@
 
       & .account__status
         background-color: $color-green-opacity
-        background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0,7l3,3L10,0' transform='translate(1 1)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
+
+        & svg path
+          stroke: $color-green
 
     +m('meeting')
       background-image: url("/img/svg-icons/icon-meeting.svg")
@@ -119,7 +121,9 @@
 
       & .account__status
         background-color: $color-blue-opacity
-        background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0,7l3,3L10,0' transform='translate(1 1)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
+
+        & svg path
+          stroke: $color-blue
 
     +m('webinar')
       background-image: url("/img/svg-icons/icon-webinar.svg")
@@ -128,7 +132,9 @@
 
       & .account__status
         background-color: $color-orange-opacity
-        background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0,7l3,3L10,0' transform='translate(1 1)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
+
+        & svg path
+          stroke: $color-orange
 
     +m('status')
       background-image: url("/img/svg-icons/icon-status.svg")
@@ -137,7 +143,9 @@
 
       & .account__status
         background-color: $color-purple-opacity
-        background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0,7l3,3L10,0' transform='translate(1 1)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
+
+        & svg path
+          stroke: $color-purple
 
     +m('other')
       background-image: url("/img/svg-icons/icon-other.svg")
@@ -146,7 +154,9 @@
 
       & .account__status
         background-color: $color-lightblue-opacity
-        background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0,7l3,3L10,0' transform='translate(1 1)' fill='none' stroke='%232dc76d' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2'/%3E%3C/svg%3E")
+
+        & svg path
+          stroke: $color-lightblue
 
   +e('theme')
     width: calc(100% - 40px)

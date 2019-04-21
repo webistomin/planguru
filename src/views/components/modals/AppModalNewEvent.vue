@@ -25,6 +25,11 @@
             legend.modal__legend Choose date
             p.modal__error.error
           button.modal__date(type="button" @click="openDateModal") Today, 08:00 — 09:00 AM
+            simple-svg(
+              :filepath="'/img/svg-icons/icon-arrow-down.svg'"
+              width="25"
+              height="12"
+            )
         fieldset.modal__group
           legend.modal__legend Choose meeting type
           .modal__wrap
@@ -44,9 +49,10 @@
                 ) {{item.name}}
         fieldset.modal__group
           legend.modal__legend White short description
-          textarea.modal__message(
+          textarea-autosize.modal__message(
             placeholder="Message..."
             v-model="meetingMessage"
+            :max-height="350"
             )
         button.modal__submit(
           type="submit"

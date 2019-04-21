@@ -31,7 +31,7 @@
     transform: translateX(0)
 
 .v--modal-overlay
-  background-color: rgba(37, 38, 94, 0.2)
+  background-color: $color-navy-opacity
 
 .v--modal
   box-shadow: none
@@ -39,3 +39,10 @@
 
 .v--modal-overlay .v--modal-box
   overflow: auto
+
+.simple-svg-wrapper
+  height: 100%
+  +flex-center
+
+  & svg path
+    +ts()

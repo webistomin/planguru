@@ -5,6 +5,12 @@
     :aria-label="'close ' + modalName"
     :class="{'modal__close_arrow': isArrow}"
     )
+    simple-svg(
+      v-if='isArrow'
+      :filepath="'/img/svg-icons/icon-arrow-left.svg'"
+      width="25"
+      height="12"
+    )
 </template>
 
 <script>

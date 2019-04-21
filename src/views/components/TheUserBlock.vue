@@ -36,6 +36,11 @@
                   img.account__img(src='/img/avatars/avatar-4.png' width='129' height='129')
               li.account__status
                 span.account__status
+                  simple-svg(
+                    :filepath="'/img/svg-icons/icon-check.svg'"
+                    width="14"
+                    height="14"
+                  )
           li.account__item.account__item_status
             h3.account__theme Project daily stand-up
             .account__date
@@ -57,6 +62,11 @@
                   img.account__img(src='/img/avatars/avatar-8.png' width='129' height='129')
               li.account__status
                 span.account__status
+                  simple-svg(
+                    :filepath="'/img/svg-icons/icon-check.svg'"
+                    width="14"
+                    height="14"
+                  )
 </template>
 
 <script>
