@@ -5,11 +5,18 @@
     :adaptive="true"
     height="auto"
     transition="nice-modal-fade"
+    @before-close="emitDate"
   )
-    AppCloseModalBtn(:modal-name="'dateModal'")
+    AppCloseModalBtn(
+      :modal-name="'dateModal'"
+      )
     .modal__container.modal__container_padding
       p.modal__legend Choose date
-      Datepicker(:inline="true" calendar-class="modal__calendar")
+      Datepicker(
+        v-model="meetingDate"
+        :inline="true"
+        calendar-class="modal__calendar"
+        )
       RangeSlider.modal__slider(
         v-model="meetingTime"
         height="2px"
@@ -35,12 +42,16 @@ export default {
   components: { AppCloseModalBtn },
   data() {
     return {
+      meetingDate: null,
       meetingTime: [9, 22],
     };
   },
   methods: {
     formatter(value) {
       return timeConverter(value);
+    },
+    emitDate() {
+      this.$emit('onSendMeetingDateAndTime', [this.meetingTime, this.meetingDate]);
     },
   },
 };

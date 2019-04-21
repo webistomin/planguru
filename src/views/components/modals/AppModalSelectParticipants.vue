@@ -5,6 +5,7 @@
     :adaptive="true"
     height="auto"
     transition="nice-modal-fade"
+    @before-close="emitParticipants"
   )
     AppCloseModalBtn(:modal-name="'selectModal'")
     .modal__container.modal__container_padding
@@ -110,6 +111,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    emitParticipants() {
+      this.$emit('onSendParticipants', this.selectedParticipants);
+    },
   },
 };
 </script>

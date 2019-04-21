@@ -8,8 +8,11 @@
     transition="nice-modal-fade"
   ).modal.modal_new-event
     .modal__inner
-      AppCloseModalBtn(:modalName="'eventModal'" :isArrow="true")
-      form.modal__form
+      AppCloseModalBtn(
+        :modalName="'eventModal'"
+        :isArrow="true"
+        )
+      form.modal__form(@submit.prevent="onSubmit")
         input.modal__input(
           type="text"
           placeholder="Name your meeting"
@@ -19,12 +22,26 @@
           .modal__holder
             legend.modal__legend Invite people
             p.modal__error.error
-          button.modal__btn(type="button" @click="openSelectModal")
+          .modal__box
+            ul(v-if='meetingParticipants').modal__selected-peoples
+              li(v-for="person of meetingParticipants").modal__selected-people
+                img(
+                  :src="person.avatar"
+                  width='38'
+                  height="38"
+                  :alt="person.fullname"
+                  :title="person.fullname"
+                  )
+            button.modal__btn(type="button" @click="openSelectModal")
         fieldset.modal__group
           .modal__holder
             legend.modal__legend Choose date
             p.modal__error.error
-          button.modal__date(type="button" @click="openDateModal") Today, 08:00 — 09:00 AM
+          button.modal__date(
+            type="button"
+            @click="openDateModal"
+            :class="{'modal__date_selected': meetingDate && meetingTime}"
+            ) {{ getFormattedDate }}
             simple-svg(
               :filepath="'/img/svg-icons/icon-arrow-down.svg'"
               width="25"
@@ -58,8 +75,8 @@
           type="submit"
           :class="{'modal__submit_disabled': !isFormValid}"
           ) Schedule meeting
-        AppModalDatepick
-        AppModalSelectParticipants
+        AppModalDatepick(@onSendMeetingDateAndTime="onSendMeetingDateAndTime")
+        AppModalSelectParticipants(@onSendParticipants="onSendParticipants")
 </template>
 
 <script>
@@ -97,9 +114,13 @@ export default {
           name: 'Other',
         },
       ],
-      meetingName: '',
-      meetingType: '',
-      meetingMessage: '',
+      meetingName: null,
+      meetingType: null,
+      meetingMessage: null,
+      meetingDate: null,
+      meetingTime: null,
+      meetingParticipants: null,
+      today: new Date(),
     };
   },
   methods: {
@@ -112,10 +133,31 @@ export default {
     getFormattedMeetingName(name) {
       return [...name.toLowerCase().trim().split(' ')].join('-');
     },
+    onSendMeetingDateAndTime(datetimeArray) {
+      [this.meetingTime, this.meetingDate] = datetimeArray;
+    },
+    onSendParticipants(participantsArray) {
+      this.meetingParticipants = participantsArray;
+    },
+    onSubmit() {
+      console.log(this.meetingName);
+      console.log(this.meetingType);
+      console.log(this.meetingMessage);
+      console.log(this.meetingDate);
+      console.log(this.meetingTime);
+      console.log(this.meetingParticipants);
+    },
   },
   computed: {
     isFormValid() {
       return false;
+    },
+    getFormattedDate() {
+      if (this.meetingTime === null || this.meetingDate === null) {
+        return `Today, ${this.today.getHours()}:00 — ${this.today.getHours() + 1}:00`;
+      }
+      const [startHour, endHour] = this.meetingTime;
+      return `Today, ${startHour} — ${endHour}`;
     },
   },
 };

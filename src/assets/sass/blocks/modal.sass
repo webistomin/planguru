@@ -93,6 +93,7 @@
       width: 16px
       height: 2px
       +ts()
+      backface-visibility: hidden
 
     &::after
       transform: translate(-50%,-50%) rotate(90deg)
@@ -128,6 +129,13 @@
       & .simple-svg-wrapper svg path
         stroke: $color-purple
 
+    +m('selected')
+      color: $color-purple
+
+      & .simple-svg-wrapper svg path
+        stroke: $color-purple
+
+
   +e('radio')
     +visually-hidden
 
@@ -153,8 +161,6 @@
             z-index: 1
             background-color: rgba(137, 137, 137, 0.5)
             +ts()
-
-
 
   +e('wrap')
     display: flex
@@ -235,6 +241,14 @@
     padding-top: 20px
     padding-bottom: 36px
 
+    & .prev ~ span
+      color: $color-purple
+
+    & header .prev:not(.disabled):hover,
+    & header .next:not(.disabled):hover,
+    & header .up:not(.disabled):hover
+      background-color: $color-purple-opacity
+
     & header .next:after
       border-left-color: $color-purple
 
@@ -272,7 +286,11 @@
     & .cell.month.selected
       color: $color-purple
 
-    & .cell.day:not(.blank)
+    & .cell.day.today
+      color: $color-purple
+      font-weight: 700
+
+    & .cell.day
       font-weight: 500
       color: $color-navy
       font-size: 14px
@@ -291,6 +309,7 @@
         background-color: $color-purple
         transform: translate(-50%,-50%) scale(0)
         transform-origin: center
+        backface-visibility: hidden
         +ts()
         z-index: -1
 
@@ -309,6 +328,9 @@
 
         &:hover
           background-color: transparent
+
+    & .cell.blank
+      visibility: hidden
 
   +e('slider')
     width: calc(100% - 20px) !important
@@ -522,6 +544,7 @@
     outline: none
     box-sizing: border-box
     padding-top: 2px
+    +ts()
 
     &::before,
     &::after
@@ -533,10 +556,14 @@
       top: 13px
       left: 8px
       border-radius: 1px
+      backface-visibility: hidden
 
     &::after
       transform: rotate(90deg)
 
+    &:hover,
+    &:focus
+      box-shadow: 0 3px 10px 0 $color-purple-opacity
 
     +m('added')
       background-color: #E9F9F0
@@ -554,3 +581,16 @@
 
       &::after
         display: none
+
+  +e('box')
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+
+  +e('selected-peoples')
+    display: flex
+    flex-wrap: wrap
+
+  +e('selected-people')
+    margin-right: 5px
+    margin-bottom: 5px
