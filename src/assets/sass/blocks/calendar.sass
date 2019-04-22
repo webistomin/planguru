@@ -79,13 +79,45 @@
         width: 10px
         height: 2px
         background-color: $color-white
+        z-index: 2
 
       &::after
         transform: translate(-50%, -50%) rotate(90deg)
 
+    +m('fill')
+      position: absolute
+      background-color: $color-navy-opacity
+      left: 480px
+      z-index: 1
+      width: 90px
 
-    //&:not(:last-of-type)
-    //  margin-bottom: 24px
+      &::before
+        content: ""
+        position: absolute
+        left: 5px
+        top: 5px
+        width: 24px
+        height: 24px
+        background-image: url("/img/svg-icons/icon-webinar.svg")
+        background-repeat: no-repeat
+        background-position: center
+        background-size: contain
+        z-index: 3
+
+      &:hover,
+      &:focus
+        position: absolute
+
+      & .calendar__overlay
+        display: none
+        height: 100%
+        width: 20%
+        content: ""
+        position: absolute
+        top: 0
+        left: 0
+        background-color: $color-orange
+        z-index: -1
 
   +e('row')
     position: relative
@@ -95,19 +127,21 @@
     &:not(:last-child)
       margin-bottom: 12px
 
-    &:hover
+    &:hover,
+    &:focus
       & .calendar__roomname
         color: $color-purple
 
     +m('small')
 
-      &:hover
+      &:hover,
+      &:focus
         & .calendar__roomname
           color: $color-green
 
       & .calendar__room
         pointer-events: none
-        z-index: 1
+        z-index: 3
         transform: translateX(-32px)
 
       & .calendar__roomname
@@ -117,15 +151,34 @@
         opacity: 0
         visibility: hidden
 
+  +e('floor')
+
+    &:not(:last-of-type)
+      margin-bottom: 24px
+
+  +e('stage')
+    box-sizing: border-box
+    padding-left: 10px
+    font-size: 14px
+    line-height: 1.1
+    color: $color-purple
+    margin: 0
+    font-weight: 700
+    text-transform: uppercase
+    +text-overflow()
+    width: 120px
+    display: inline-block
+
   +e('current')
     position: absolute
-    top: -4px
-    left: 120px
+    top: 11px
+    left: -32px
     width: 2px
-    height: calc(100% + 4px)
+    height: calc(100% - 11px)
     background-color: $color-purple
     z-index: 2
     box-shadow: 0 4px 6px 0 $color-purple-opacity
+    transform: translateX(150px)
     +ts()
     backface-visibility: hidden
 
