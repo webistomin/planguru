@@ -97,17 +97,17 @@
                 'error_visible':!$v.meetingMessage.required && $v.meetingMessage.$dirty, \
                 'error_shake': isInvalid\
                 }"
-            v-if='!$v.meetingMessage.required'
             ).modal__error.error  Please, type a message
             p(:class="{\
                 'error_visible':!$v.meetingMessage.minLength && $v.meetingMessage.$dirty, \
                 'error_shake': isInvalid\
                 }"
+              v-if='$v.meetingMessage.required'
             ).modal__error.error Message must be more than 5 characters
           textarea-autosize.modal__message(
             placeholder="Message..."
             v-model.trim.lazy="$v.meetingMessage.$model"
-            :max-height="350"
+            :max-height="150"
             )
         button.modal__submit(
           type="submit"
@@ -128,9 +128,6 @@ import AppModalSelectParticipants from '@/views/components/modals/AppModalSelect
 export default {
   name: 'AppModalNewEvent',
   components: { AppModalSelectParticipants, AppModalDatepick, AppCloseModalBtn },
-  mounted() {
-    this.$modal.show('eventModal');
-  },
   data() {
     return {
       meetingTypes: [

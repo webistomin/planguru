@@ -1,7 +1,65 @@
 .calendar
-  margin-top: 220px
-  margin-left: 32px
+  display: flex
+  flex-direction: column
+  padding-top: 220px
+  box-sizing: border-box
+  height: 100%
   position: relative
+  overflow: auto
+  background-color: $color-line
+
+  +e('times')
+    display: flex
+    margin-left: 32px
+    margin-right: 30px
+    flex-direction: row
+
+  +e('room')
+    position: sticky
+    left: 0
+    width: 120px
+    flex-shrink: 0
+    padding: 10px
+    box-sizing: border-box
+    font-weight: 500
+
+  +e('roomname')
+    margin: 0
+    font-size: 14px
+    +text-overflow()
+
+  +e('seats')
+    font-size: 12px
+    +text-overflow()
+
+  +e('events')
+    display: flex
+    flex-direction: column
+
+  +e('event')
+    flex-shrink: 0
+    width: 60px
+    height: 60px
+    background-color: $color-white
+    box-sizing: border-box
+    border: 1px solid #DFDFE4
+
+    &:not(:last-of-type)
+      border-right: none
+
+    &:hover
+      background-color: red
+
+    //&:not(:last-of-type)
+    //  margin-bottom: 24px
+
+  +e('row')
+    position: relative
+    display: flex
+    flex-shrink: 0
+
+    &:not(:last-child)
+      margin-bottom: 12px
 
   +e('current')
     position: absolute
@@ -25,7 +83,7 @@
       box-shadow: inherit
       +vertical-center()
 
-  +e('time')
+  //+e('time')
     display: inline-block
     font-weight: 500
     font-size: 12px
@@ -53,17 +111,17 @@
       background-color: $color-line
       +vertical-center()
 
-  +e('events')
-    box-sizing: border-box
-    width: calc(100% - 120px)
-    margin-left: 120px
-    margin-top: 42px
-    position: absolute
-    top: 0
-    left: 0
-    height: calc(100% - 42px)
+  //+e('events')
+  //  box-sizing: border-box
+  //  width: calc(100% - 120px)
+  //  margin-left: 120px
+  //  margin-top: 42px
+  //  position: absolute
+  //  top: 0
+  //  left: 0
+  //  height: calc(100% - 42px)
 
-  +e('event')
+  //+e('event')
     position: absolute
     top: 0
     left: 0
