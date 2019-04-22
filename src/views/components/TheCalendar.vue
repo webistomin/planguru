@@ -3,6 +3,7 @@
     ul.calendar__times
       li.calendar__time(v-for="i of 20") 09:00
     ul.calendar__events
+      li.calendar__current
       li.calendar__row
         div.calendar__cells
           div.calendar__room
@@ -10,22 +11,52 @@
             p.calendar__seats 4 – 6 peoples
           button.calendar__event(v-for="i of 20")
       li.calendar__row
-        div.calendar__room
-          h2.calendar__roomname Icanhascheezburger
-          p.calendar__seats 4 – 6 peoples
         div.calendar__cells
+          div.calendar__room
+            h2.calendar__roomname Leeroy Jenkins
+            p.calendar__seats 4 – 6 peoples
           button.calendar__event(v-for="i of 20")
       li.calendar__row
-        div.calendar__room
-          h2.calendar__roomname Rick Roll
-          p.calendar__seats 4 – 6 peoples
         div.calendar__cells
+          div.calendar__room
+            h2.calendar__roomname Leeroy Jenkins
+            p.calendar__seats 4 – 6 peoples
           button.calendar__event(v-for="i of 20")
       li.calendar__row
-        div.calendar__room
-          h2.calendar__roomname Peanut Butter Jelly
-          p.calendar__seats 4 – 6 peoples
         div.calendar__cells
+          div.calendar__room
+            h2.calendar__roomname Icanhascheezburger
+            p.calendar__seats 4 – 6 peoples
+          button.calendar__event(v-for="i of 20")
+      li.calendar__row
+        div.calendar__cells
+          div.calendar__room
+            h2.calendar__roomname Rick Roll
+            p.calendar__seats 4 – 6 peoples
+          button.calendar__event(v-for="i of 20")
+      li.calendar__row
+        div.calendar__cells
+          div.calendar__room
+            h2.calendar__roomname Peanut Butter Jelly
+            p.calendar__seats 4 – 6 peoples
+          button.calendar__event(v-for="i of 20")
+      li.calendar__row
+        div.calendar__cells
+          div.calendar__room
+            h2.calendar__roomname Peanut Butter Jelly
+            p.calendar__seats 4 – 6 peoples
+          button.calendar__event(v-for="i of 20")
+      li.calendar__row
+        div.calendar__cells
+          div.calendar__room
+            h2.calendar__roomname Peanut Butter Jelly
+            p.calendar__seats 4 – 6 peoples
+          button.calendar__event(v-for="i of 20")
+      li.calendar__row
+        div.calendar__cells
+          div.calendar__room
+            h2.calendar__roomname Peanut Butter Jelly
+            p.calendar__seats 4 – 6 peoples
           button.calendar__event(v-for="i of 20")
 
     //.calendar__current
@@ -49,15 +80,15 @@ export default {
   components: { AppModalNewEvent, AppAddEventButton },
   methods: {
     setRoomSize(e) {
-      const rooms = document.querySelectorAll('.calendar__room');
+      const rows = document.querySelectorAll('.calendar__row');
 
       if (e.target.scrollLeft >= 200) {
-        rooms.forEach((item) => {
-          item.classList.add('calendar__room_small');
+        rows.forEach((item) => {
+          item.classList.add('calendar__row_small');
         });
       } else {
-        rooms.forEach((item) => {
-          item.classList.remove('calendar__room_small');
+        rows.forEach((item) => {
+          item.classList.remove('calendar__row_small');
         });
       }
     },
