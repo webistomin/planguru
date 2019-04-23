@@ -108,6 +108,8 @@ export default {
         setTimeout(() => {
           this.isInvalid = false;
         }, 300);
+      } else {
+        this.$router.push('/home');
       }
     },
     openRegForm() {

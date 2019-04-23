@@ -1,5 +1,6 @@
 <template lang="pug">
   section.calendar(@scroll="setRoomSize")
+    AppPreloader(:class="{'preloader_hidden': !isLoading}")
     ul.calendar__times
       li.calendar__time(v-for="i of workingTimes") {{i}}
     ul.calendar__events
@@ -71,12 +72,14 @@
 <script>
 import AppAddEventButton from '@/views/components/AppAddEventButton.vue';
 import AppModalNewEvent from '@/views/components/modals/AppModalNewEvent.vue';
+import AppPreloader from '@/views/components/AppPreloader.vue';
 
 export default {
   name: 'TheCalendar',
-  components: { AppModalNewEvent, AppAddEventButton },
+  components: { AppPreloader, AppModalNewEvent, AppAddEventButton },
   data() {
     return {
+      isLoading: true,
       workingTimes: ['09:00', '09:30', '10:00',
         '10:30', '11:00', '11:30',
         '12:00', '12:30', '01:00',
@@ -89,6 +92,9 @@ export default {
     };
   },
   mounted() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
     const today = new Date();
     const hour = today.getHours();
     const minutes = today.getMinutes();
