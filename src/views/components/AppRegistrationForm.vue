@@ -2,6 +2,11 @@
   section.reg(:class='{"hidden" : !isRegFormVisible}')
     .reg__container.container
       a.reg__home.home(@click="openLoginForm")
+        simple-svg(
+          :filepath="'/img/svg-icons/icon-arrow-left.svg'"
+          width="25"
+          height="12"
+        )
       h1.reg__title.title Sign up
       p.reg__desc.desc Create an account to use Planguru
         br

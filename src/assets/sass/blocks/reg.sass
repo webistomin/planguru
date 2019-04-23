@@ -24,15 +24,19 @@
     display: inline-block
     width: 40px
     height: 40px
-    background-image: url("/img/svg-icons/arrow-left.svg")
-    background-repeat: no-repeat
-    background-position: left center
     backface-visibility: hidden
     +ts()
 
     &:hover,
     &:focus
       transform: translateX(-5px)
+
+    & .simple-svg-wrapper
+      align-items: flex-start
+      justify-content: flex-start
+
+    & .simple-svg-wrapper svg path
+      stroke: $color-orange
 
   +e('title')
     margin: 0 0 10px !important

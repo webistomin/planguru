@@ -2,6 +2,11 @@
   section.recovery(:class='{"hidden" : !isRecoveryFormVisible}')
     .recovery__container.container
       a.recovery__home.home(@click="openLoginForm")
+        simple-svg(
+          :filepath="'/img/svg-icons/icon-arrow-left.svg'"
+          width="25"
+          height="12"
+        )
       h1.recovery__title.title Recovery password
       p.recovery__desc.desc Enter the email address and we’ll send you the link
         | to reset your password.
