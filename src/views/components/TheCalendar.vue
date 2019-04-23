@@ -93,9 +93,9 @@ export default {
     const hour = today.getHours();
     const minutes = today.getMinutes();
 
-    const currentHourDifference = hour;
+    const currentHourDifference = hour - 9;
     console.log(currentHourDifference);
-    this.$refs.currentTimeLine.style.transform = `translateX(${currentHourDifference * 60 + 152 + minutes}px)`;
+    this.$refs.currentTimeLine.style.transform = `translateX(${currentHourDifference * 120 + 152 + minutes * 2}px)`;
   },
   methods: {
     setRoomSize(e) {
